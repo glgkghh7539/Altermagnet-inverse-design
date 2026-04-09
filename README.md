@@ -9,7 +9,7 @@
 ---
 
 <p align="center">
-  <img src="workflow.png" alt="Workflow" width="800">
+  <img src="workflow.pdf" alt="Workflow" width="800">
 </p>
 
 ## Overview
