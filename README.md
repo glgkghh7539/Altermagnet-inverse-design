@@ -5,11 +5,11 @@
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![XGBoost](https://img.shields.io/badge/Model-XGBoost-orange.svg)](https://xgboost.readthedocs.io/)
-
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19488475.svg)](https://doi.org/10.5281/zenodo.19488475)
 ---
 
 <p align="center">
-  <img src="workflow.pdf" alt="Workflow" width="800">
+  <img src="workflow.png" alt="Workflow" width="800">
 </p>
 
 ## Overview
