@@ -100,7 +100,7 @@ def pool_oof(recs, keys):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--data', default='fin_data.csv')
-    ap.add_argument('--sym',  default='magnetic_symmetry_all.csv')
+    ap.add_argument('--sym',  default='raw/magnetic_symmetry_all.csv')
     ap.add_argument('--outdir', default='.')
     ap.add_argument('--workers', type=int, default=max(1, (os.cpu_count() or 2) - 2))
     ap.add_argument('--skip-dropcol', action='store_true')

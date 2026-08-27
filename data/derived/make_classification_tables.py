@@ -16,14 +16,14 @@ Nothing is recomputed here - every column is carried over or aggregated.
 
 Inputs, all under data/:
     fin_data.csv                            sse, gamma-point average, |m1|, |total|
-    magnetic_symmetry_all.csv               verdict + sublattice operation, per structure,
+    raw/magnetic_symmetry_all.csv           verdict + sublattice operation, per structure,
                                             at symprec 0.05
-    magnetic_symmetry_all_symprec001.csv    the same at symprec 0.01, the tolerance the
+    raw/magnetic_symmetry_all_symprec001.csv the same at symprec 0.01, the tolerance the
                                             response letter reports alongside it
-    magnetic_symmetry_parents.csv           the same, per parent
-    magnetic_spacegroup_type_parents.csv    MSG type and the BNS / UNI numbers, with the
+    raw/magnetic_symmetry_parents.csv       the same, per parent
+    raw/magnetic_spacegroup_type_parents.csv MSG type and the BNS / UNI numbers, with the
                                             moments given as collinear scalars
-    magnetic_spacegroup_type_parents_c.csv  the same with the moments along c, the direction
+    raw/magnetic_spacegroup_type_parents_c.csv the same with the moments along c, the direction
                                             the calculations impose. The MSG acts on them as
                                             axial vectors, so the type differs: 96 of the 322
                                             parents change, all of them between type I and
@@ -72,11 +72,11 @@ def strain_tag(filename, parent):
 
 def main():
     fin = pd.read_csv(os.path.join(DATA, 'fin_data.csv'))
-    sym = pd.read_csv(os.path.join(DATA, 'magnetic_symmetry_all.csv'))
-    tight = pd.read_csv(os.path.join(DATA, 'magnetic_symmetry_all_symprec001.csv'))
-    par = pd.read_csv(os.path.join(DATA, 'magnetic_symmetry_parents.csv'))
-    msg = pd.read_csv(os.path.join(DATA, 'magnetic_spacegroup_type_parents.csv'))
-    msg_c = pd.read_csv(os.path.join(DATA, 'magnetic_spacegroup_type_parents_c.csv'))
+    sym = pd.read_csv(os.path.join(DATA, 'raw', 'magnetic_symmetry_all.csv'))
+    tight = pd.read_csv(os.path.join(DATA, 'raw', 'magnetic_symmetry_all_symprec001.csv'))
+    par = pd.read_csv(os.path.join(DATA, 'raw', 'magnetic_symmetry_parents.csv'))
+    msg = pd.read_csv(os.path.join(DATA, 'raw', 'magnetic_spacegroup_type_parents.csv'))
+    msg_c = pd.read_csv(os.path.join(DATA, 'raw', 'magnetic_spacegroup_type_parents_c.csv'))
     sgn = pd.read_csv(os.path.join(DATA, 'raw', 'spin_splitting_summary.csv'))
     lm_path = os.path.join(DATA, 'raw', 'local_moments.csv')
     lm = pd.read_csv(lm_path) if os.path.isfile(lm_path) else None

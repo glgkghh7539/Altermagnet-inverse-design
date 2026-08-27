@@ -125,7 +125,7 @@ figures/       plotdata/                      flat CSV tables for redrawing each
 | `gamma point average splitting` | in **meV** (a different unit from `sse`): the mean of \|E↑−E↓\| over all bands at Γ |
 | Descriptors | 52; the order is `FEATURE_ORDER` in `optimization/BO.py` |
 
-**`data/magnetic_symmetry_all.csv`** and **`magnetic_symmetry_parents.csv`** give the
+**`data/raw/magnetic_symmetry_all.csv`** and **`magnetic_symmetry_parents.csv`** give the
 sublattice-connecting operation for every row and parent at `symprec = 0.05`, and
 **`magnetic_symmetry_all_symprec001.csv`** repeats it at `0.01`
 (`python symmetry/altermag_batch.py <poscar dir> <name list> <out.csv> 0.01`). The `verdict`
@@ -134,9 +134,9 @@ column takes four values: `ALTERMAGNET` (2,841 rows), `conventional_AFM_inversio
 conventional-AFM classes are the symmetry-preserving controls retained in the training cohort;
 they are not claimed to be altermagnets.
 
-`data/README.md` is the file-by-file inventory of that directory — which of the three tiers
-each table belongs to, how many rows it has, which script writes it, and which column carries
-the published quantity. Read it before joining anything.
+`data/README.md` is the inventory: three tiers — the cohort in `data/`, one family of
+per-structure properties per file in `data/raw/`, joins in `data/derived/` — with every table's
+row count, the script that writes it, and which column carries the published quantity.
 
 ### The magnetic classification of the 322 parents, in one table
 
@@ -202,8 +202,8 @@ python model/model_check.py model/final_model_all_named.json data/fin_data.csv
 python model/ablation_grouped.py data/fin_data.csv --outdir out --workers 20
 
 # cohort-composition tests
-python analysis/cohort/am_only.py --data data/fin_data.csv --sym data/magnetic_symmetry_all.csv
-python analysis/cohort/size_control.py --data data/fin_data.csv --sym data/magnetic_symmetry_all.csv
+python analysis/cohort/am_only.py --data data/fin_data.csv --sym data/raw/magnetic_symmetry_all.csv
+python analysis/cohort/size_control.py --data data/fin_data.csv --sym data/raw/magnetic_symmetry_all.csv
 
 # symmetry classification
 python symmetry/altermag_batch.py <structure-dir> names.txt out.csv 0.05
