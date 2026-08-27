@@ -121,6 +121,7 @@ figures/       plotdata/                      flat CSV tables for redrawing each
 | Item | Value |
 |---|---|
 | Target | `sse` (eV): the maximum of \|e↑−e↓\| over same-band-index pairs for which **both** eigenvalues lie inside `[E_F−2, E_F]`. **No occupancy condition is imposed.** |
+| the same quantity in `raw/sse_variants_all.csv` and `derived/candidates_sse.csv` | **`sse_max_win_both`**, not `sse_max`. Those tables carry both window conventions, and `sse_max` is the looser one — the maximum over pairs with *either* eigenvalue inside the window. They coincide for 3,341 of the 3,845 rows and differ for 504. Against `fin_data.csv`'s `sse`, `sse_max_win_both` agrees to 1 meV on 3,817 rows and `sse_max` on 3,497. Among the six candidates only CrS differs: 0.411 eV under the published definition against 0.443 under the looser one |
 | `gamma point average splitting` | in **meV** (a different unit from `sse`): the mean of \|E↑−E↓\| over all bands at Γ |
 | Descriptors | 52; the order is `FEATURE_ORDER` in `optimization/BO.py` |
 
