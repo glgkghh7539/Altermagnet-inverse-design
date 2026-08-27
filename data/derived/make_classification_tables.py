@@ -16,7 +16,10 @@ Nothing is recomputed here - every column is carried over or aggregated.
 
 Inputs, all under data/:
     fin_data.csv                            sse, gamma-point average, |m1|, |total|
-    magnetic_symmetry_all.csv               verdict + sublattice operation, per structure
+    magnetic_symmetry_all.csv               verdict + sublattice operation, per structure,
+                                            at symprec 0.05
+    magnetic_symmetry_all_symprec001.csv    the same at symprec 0.01, the tolerance the
+                                            response letter reports alongside it
     magnetic_symmetry_parents.csv           the same, per parent
     magnetic_spacegroup_type_parents.csv    MSG type and the BNS / UNI numbers
     raw/local_moments.csv                   the signed moments, m1 and m2, read back out
@@ -63,6 +66,7 @@ def strain_tag(filename, parent):
 def main():
     fin = pd.read_csv(os.path.join(DATA, 'fin_data.csv'))
     sym = pd.read_csv(os.path.join(DATA, 'magnetic_symmetry_all.csv'))
+    tight = pd.read_csv(os.path.join(DATA, 'magnetic_symmetry_all_symprec001.csv'))
     par = pd.read_csv(os.path.join(DATA, 'magnetic_symmetry_parents.csv'))
     msg = pd.read_csv(os.path.join(DATA, 'magnetic_spacegroup_type_parents.csv'))
     sgn = pd.read_csv(os.path.join(DATA, 'raw', 'spin_splitting_summary.csv'))
@@ -83,6 +87,14 @@ def main():
     t = t.merge(sym.rename(columns={'filename': 'structure', 'sg': 'spacegroup'}),
                 on='structure', how='left')
 
+    # the same classification at the tighter tolerance. The connecting operation of a
+    # relaxed CONTCAR sits 1e-3 to 1e-4 off the ideal Wyckoff position, so which structures
+    # keep it at 0.01 is the tolerance sensitivity the response letter reports.
+    t = t.merge(tight[['filename', 'verdict', 'ops', 'n_ops']].rename(columns={
+        'filename': 'structure', 'verdict': 'verdict_symprec001',
+        'ops': 'ops_symprec001', 'n_ops': 'n_ops_symprec001'}),
+        on='structure', how='left')
+
     # the parent's magnetic space group, carried onto every child
     pm = par[['filename', 'verdict']].rename(columns={'filename': 'parent',
                                                       'verdict': 'parent_verdict'})
@@ -91,6 +103,7 @@ def main():
 
     for col, label in ((t.verdict, 'magnetic_symmetry_all'),
                        (t.parent_verdict, 'magnetic_symmetry_parents'),
+                       (t.verdict_symprec001, 'magnetic_symmetry_all_symprec001'),
                        (t.msg_type, 'magnetic_spacegroup_type_parents')):
         if col.isna().any():
             sys.exit(f'{int(col.isna().sum())} of {len(t)} rows did not join against '
@@ -126,6 +139,7 @@ def main():
 
     cols = ['filename', 'structure', 'parent', 'is_parent', 'strain',
             'verdict', 'ops', 'n_ops', 'nsym', 'spacegroup',
+            'verdict_symprec001', 'ops_symprec001', 'n_ops_symprec001',
             'parent_verdict', 'verdict_same_as_parent', 'msg_type', 'bns', 'uni',
             'sse_eV', 'gamma_avg_meV',
             'm1_muB', 'm2_muB', 'm1_abs_muB', 'm_asymmetry_muB', 'antiparallel',
@@ -137,6 +151,8 @@ def main():
     p = pd.DataFrame({
         'n_structures': g.size(),
         'n_altermagnet': g.verdict.apply(lambda v: (v == 'ALTERMAGNET').sum()),
+        'n_altermagnet_symprec001': g.verdict_symprec001.apply(
+            lambda v: (v == 'ALTERMAGNET').sum()),
         'n_verdict_changed_by_strain': g.verdict_same_as_parent.apply(lambda v: (~v).sum()),
         'sse_max_eV': g.sse_eV.max(),
         'sse_mean_eV': g.sse_eV.mean(),

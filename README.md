@@ -125,7 +125,9 @@ figures/       plotdata/                      flat CSV tables for redrawing each
 | Descriptors | 52; the order is `FEATURE_ORDER` in `optimization/BO.py` |
 
 **`data/magnetic_symmetry_all.csv`** and **`magnetic_symmetry_parents.csv`** give the
-sublattice-connecting operation for every row and parent at `symprec = 0.05`. The `verdict`
+sublattice-connecting operation for every row and parent at `symprec = 0.05`, and
+**`magnetic_symmetry_all_symprec001.csv`** repeats it at `0.01`
+(`python symmetry/altermag_batch.py <poscar dir> <name list> <out.csv> 0.01`). The `verdict`
 column takes four values: `ALTERMAGNET` (2,841 rows), `conventional_AFM_inversion` (687),
 `conventional_AFM_translation` (124) and `compensated_FiM_candidate` (193). The two
 conventional-AFM classes are the symmetry-preserving controls retained in the training cohort;
@@ -154,6 +156,7 @@ What the tables say:
 | **the two local moments** | known for **all 3,845**; antiparallel in **3,839 (99.8 %)**, and \|\|m₁\|−\|m₂\|\| never exceeds **0.006 μB** (median 0.0000, p99 0.0040) |
 | the six that are not antiparallel | every one of them has \|m\| ≤ 0.008 μB — the weakly spin-polarized numerical solutions the referee asks about, now identifiable rather than hidden. 101 structures in all have \|m₁\| < 0.1 μB; the median over the cohort is 2.76 μB, and 2.59 μB over the rows classified `ALTERMAGNET` |
 | Γ-point average | of **absolute** differences; median 0.89 meV, 90th percentile 3.68, max 9.96 |
+| tolerance | both classifications are in the tables: `verdict` at symprec 0.05 and `verdict_symprec001` at 0.01. Of the 811 rows classified conventional-AFM at 0.05, 290 keep the connecting operation at 0.01 (max SSE 0.0996 eV) and 521 lose it (max 0.1554) - the residual splitting sits in the entries whose operation exists only at the looser tolerance |
 
 **Signs, and where the moments come from.** `fin_data.csv` carries magnitudes - its
 `ion1 tot` is \|m₁\| and its `tot_mag` is \|m_total\|. Three files carry the signed pair, all
