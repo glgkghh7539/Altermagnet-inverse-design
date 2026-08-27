@@ -1,163 +1,177 @@
 # NiS Formation Energy — Ni–S Convex Hull
 
-NiAs형 NiS(α-NiS, 알터마그넷 후보)가 열역학적으로 어디에 놓이는지를 정량화한 작업.
-리뷰어 대응이 목적이며, **Materials Project와 직접 비교 가능한 형태**로 값을 낸다.
+Where NiAs-type NiS (α-NiS, the altermagnet candidate) sits thermodynamically, quantified in a
+form directly comparable with the Materials Project.
 
-- 서버: TGM (`ssh MASTER`), 작업 경로 `~/NiS_hull/`
-- 계산: VASP 6.4.2 · 9개 상 (본 hull) + 40개 런 (Hubbard U 스캔)
-- 상태: **완료**
+- Calculations: VASP 6.4.2 — 9 phases for the hull, plus 40 runs for the Hubbard *U* scan
+- Status: **complete**
 
 ---
 
-## 1. 핵심 결과
+## 1. Headline result
 
-**NiAs형 NiS는 0 K hull 위 {nias_hull:.1f} meV/atom, Ef = {nias_ef:.4f} eV/atom** (MP2020 보정 기준).
+**NiAs-type NiS lies {nias_hull:.1f} meV/atom above the 0 K hull, Ef = {nias_ef:.4f} eV/atom**
+(on the MP2020 correction scale).
 
-저온 안정상인 millerite는 hull 위 {mil_hull:.1f} meV/atom이므로, 두 다형체 간격은
-**{poly_gap:.0f} meV/atom** (millerite가 낮음) — 실험과 일치한다.
+Millerite, the low-temperature stable polymorph, lies {mil_hull:.1f} meV/atom above the hull, so
+the separation between the two polymorphs is **{poly_gap:.0f} meV/atom** with millerite lower —
+in agreement with experiment.
 
 ![convex hull](fig1_convex_hull.png)
 
 ---
 
-## 2. 계산 조건
+## 2. Calculation settings
 
-모든 상에 **동일 조건**을 적용했다. 이것이 formation energy 비교를 성립시키는 전제다.
+**Identical settings were applied to every phase.** That is the premise that makes the formation
+energies comparable at all.
 
-| 항목 | 값 |
+| Item | Value |
 |---|---|
-| 범함수 | PBE, **Hubbard U 없음** (MP와 비교 가능하게 유지) |
+| Functional | PBE, **no Hubbard U** (kept comparable with MP) |
 | POTCAR | PAW 54, `Ni_pv` / `S` |
 | ENCUT | 520 eV, PREC=Accurate, LASPH, LREAL=.FALSE. |
-| k-점 | **KSPACING**: relax 0.25 / static 0.15, KGAMMA=.TRUE. |
-| relax | ISIF=3, IBRION=2, NSW=120, EDIFFG=−0.01, ISMEAR=1/σ=0.2, **2-pass** |
-| static | NSW=0, ISMEAR=−5 (tetrahedron), EDIFF=1e-6, LORBIT=11 |
-| 스핀 | ISPIN=2, FM 초기화 (MAGMOM Ni 5.0 / S 0.6) |
+| k-points | **KSPACING**: 0.25 for relaxation, 0.15 for static; KGAMMA=.TRUE. |
+| Relaxation | ISIF=3, IBRION=2, NSW=120, EDIFFG=−0.01, ISMEAR=1/σ=0.2, **two passes** |
+| Static | NSW=0, ISMEAR=−5 (tetrahedron), EDIFF=1e-6, LORBIT=11 |
+| Spin | ISPIN=2, ferromagnetic initialization (MAGMOM Ni 5.0 / S 0.6) |
 
-k-점을 KSPACING으로 잡은 이유: 상마다 셀 크기가 다르므로(1원자 Ni부터 34원자 Ni₉S₈까지)
-**동일한 k-점 밀도**를 보장해야 한다. 상별로 격자를 임의 지정하면 비교가 성립하지 않는다.
-실제 유도된 격자는 Ni의 21×21×21(static)부터 α-S의 5×5×5까지 걸쳐 있다.
+k-points are set through KSPACING because the cells differ greatly in size — from one atom for
+Ni to 34 for Ni₉S₈ — and the comparison requires the **same k-point density**, not the same
+grid. Fixing a grid per phase by hand would not be a like-for-like comparison. The grids that
+result run from 21×21×21 for Ni (static) down to 5×5×5 for α-S.
 
-2-pass relax는 ISIF=3의 평면파 basis가 초기 셀에 고정되는 문제(Pulay stress) 때문이다.
-pass1 완화 후 CONTCAR에서 재시작하면 현재 부피 기준으로 basis가 재생성된다.
+The relaxation is run in two passes because the plane-wave basis of an ISIF=3 run is fixed to
+the starting cell (Pulay stress). Restarting from the CONTCAR of the first pass regenerates the
+basis at the current volume.
 
 ---
 
-## 3. 전체 결과
+## 3. Full results
 
 {hull_table}
 
-★ = hull 위(안정). Ef는 eV/atom, E_hull은 meV/atom.
-`Ef_raw`는 순수 PBE 값, `Ef (MP2020)`은 MP2020 황화물 보정을 적용한 값.
+★ marks a phase on the hull. Ef is in eV/atom and E_hull in meV/atom. `Ef_raw` is the plain PBE
+value; `Ef (MP2020)` has the MP2020 sulfide anion correction applied.
 
-**안정상**: Ni, Ni₃S₂, Ni₉S₈, Ni₃S₄, NiS₂(P2₁/c), S — MP와 동일한 집합.
+**Stable phases**: Ni, Ni₃S₂, Ni₉S₈, Ni₃S₄, NiS₂ (P2₁/c), S — the same set as MP.
 
-준안정상 분해 경로:
+Decomposition paths of the metastable phases:
 
 ```
-NiS millerite    15.0 meV/atom  ->  0.708 Ni9S8 + 0.292 Ni3S4
-NiS2 pyrite      15.6 meV/atom  ->  NiS2 (P2_1/c로 다형체 전이)
-NiS NiAs형      106.8 meV/atom  ->  0.708 Ni9S8 + 0.292 Ni3S4
-                                    (= 1 NiS -> 1/12 Ni9S8 + 1/12 Ni3S4)
+NiS millerite     15.0 meV/atom  ->  0.708 Ni9S8 + 0.292 Ni3S4
+NiS2 pyrite       15.6 meV/atom  ->  NiS2 (polymorph transition to P2_1/c)
+NiS NiAs-type    106.8 meV/atom  ->  0.708 Ni9S8 + 0.292 Ni3S4
+                                     (= 1 NiS -> 1/12 Ni9S8 + 1/12 Ni3S4)
 ```
 
 ---
 
-## 4. MP2020 보정 — 이 작업의 핵심 발견
+## 4. The MP2020 correction — the key finding of this work
 
-순수 PBE로 얻은 Ef가 MP 값보다 **정확히 S 원자당 0.503 eV씩 높았다.**
-이 값은 Materials Project의 MP2020 황화물 음이온 보정과 일치한다 (pymatgen에서 직접 확인).
+The formation energies from plain PBE came out **higher than the MP values by exactly 0.503 eV
+per S atom.** That value coincides with the Materials Project's MP2020 sulfide anion correction,
+which we confirmed directly in pymatgen.
 
-보정을 적용하면 {n_dev}개 상에 대해 **평균 {mad:.1f} meV/atom** (범위 {dev_lo:+.1f} ~ {dev_hi:+.1f})으로
-MP를 재현한다. E_hull도 맞는다 — millerite 15.0 vs MP 14.2, pyrite 15.6 vs 15.2,
-NiAs형 106.8 vs mp-594의 104.7.
+With the correction applied, the calculation reproduces MP to **{mad:.1f} meV/atom on average**
+across {n_dev} phases (range {dev_lo:+.1f} to {dev_hi:+.1f}). The hull distances agree too:
+millerite 15.0 against MP's 14.2, pyrite 15.6 against 15.2, and NiAs-type 106.8 against 104.7
+for mp-594.
 
 ![MP validation](fig2_mp_validation.png)
 
-> **논문에 쓸 값은 `Ef (MP2020)` 열이다.** raw PBE 값을 그대로 MP와 비교하면
-> S 조성에 비례하는 계통 오차가 그대로 남는다.
+> **The column to quote is `Ef (MP2020)`.** Comparing raw PBE values with MP leaves a systematic
+> error proportional to the S content.
 
 ---
 
-## 5. E_hull은 기준물질에 무관하다
+## 5. E_hull does not depend on the reference states
 
-Ef는 기준물질(μ_Ni, μ_S) 선택에 따라 움직이지만, **E_above_hull은 움직이지 않는다.**
+Ef shifts with the choice of reference chemical potentials (μ_Ni, μ_S), but **E_above_hull does
+not.**
 
-μ_S에 오차 δ가 있으면 모든 Ef가 −x_S·δ만큼 이동한다. 이는 조성에 대한 1차(affine) 함수이고,
-convex hull 구성은 affine 변환에 불변이므로 hull 정점 집합도 각 상의 hull 위 거리도 그대로다.
+An error δ in μ_S shifts every Ef by −x_S·δ. That is affine in composition, and the convex hull
+construction is invariant under an affine transformation, so neither the set of hull vertices
+nor the distance of any phase above the hull moves.
 
-수치 확인 (`scripts/mu_test.py`) — μ_S를 ±0.3 eV 강제로 흔들었을 때:
+Numerical confirmation (`mu_test.py`), forcing μ_S by ±0.3 eV:
 
 ```
-  d(mu_S)   NiAs형 Ef      E_hull    |  안정상 집합
-   -0.30    -0.1159      106.8 meV  |  동일
-    0.00    -0.2659      106.8 meV  |  동일
-   +0.30    -0.4159      106.8 meV  |  동일
+  d(mu_S)   NiAs-type Ef    E_hull    |  stable set
+   -0.30      -0.1159      106.8 meV  |  unchanged
+    0.00      -0.2659      106.8 meV  |  unchanged
+   +0.30      -0.4159      106.8 meV  |  unchanged
 ```
 
-**따라서 α-S를 vdW 없이 PBE로 계산한 것은 결론에 영향이 없다.**
-α-S는 S₈ 분자결정이라 vdW 없는 PBE에서 셀이 부풀지만(실험 대비 +38%),
-그 오차는 μ_S에만 들어가고 E_hull에서는 상쇄된다. 게다가 MP도 mp-77을 동일하게
-순수 PBE로 계산하므로, vdW를 넣으면 오히려 MP와의 비교가 깨진다.
+**So computing α-S with PBE and no van der Waals correction does not affect the conclusion.**
+α-S is a molecular crystal of S₈ rings, and its cell is over-expanded in PBE without vdW (+38 %
+against experiment), but that error enters only μ_S and cancels in E_hull. MP computes mp-77 the
+same way, so adding vdW would in fact break the comparison with MP.
 
-단, **원소 S가 평형에 직접 등장하는 계산**(S 분압, NiS₂ → NiS + S 분해 등)에서는
-μ_S가 상쇄되지 않으므로 vdW가 중요해진다. 이번 경우 NiAs형의 분해 경로에는
-원소 S도 Ni 금속도 등장하지 않는다.
+The cancellation does **not** hold where elemental S appears in the equilibrium itself — an S
+partial pressure, or a decomposition such as NiS₂ → NiS + S — and vdW would matter there. The
+decomposition path of the NiAs-type phase involves neither elemental S nor Ni metal.
 
 ---
 
-## 6. Hubbard U 검토 — 열역학에는 쓰면 안 된다
+## 6. Hubbard U — it must not be used for the thermodynamics
 
-포논 계산이 U=7이므로 hull도 U를 넣어야 하는지 검토했다. **결론: 넣으면 안 된다.**
+Since the phonon calculation uses U = 7, we checked whether the hull should use U as well.
+**It should not.**
 
-E_hull이 Ni₉S₈–Ni₃S₄ tie-line 거리이므로 원소 기준물질이 상쇄된다는 성질을 이용해,
-**Ni 황화물 7개에만** U를 걸어 스캔했다 (Ni 금속에 U를 거는 비물리적 상황을 피할 수 있다).
-U=0, 2, 4, 6, 7 × {{7개 황화물 FM + NiAs형 AFM}} = 40런.
+Because E_hull here is a distance to the Ni₉S₈–Ni₃S₄ tie-line, the elemental references cancel,
+which lets us apply U to **the seven nickel sulfides only** and avoid the unphysical situation of
+putting U on nickel metal. The scan is U = 0, 2, 4, 6, 7 × {{7 sulfides FM + NiAs-type AFM}} = 40
+runs.
 
-자체 검증: U=0에서 황화물만으로 얻은 값이 106.7 / 106.8 meV/atom으로,
-9상 전체 hull의 106.8과 일치한다.
+Self-consistency check: at U = 0 the sulfide-only construction gives 106.7 / 106.8 meV/atom,
+matching the 106.8 of the full nine-phase hull.
 
 {u_table}
 
-단위 meV/atom. **음수는 NiAs형이 분해 산물보다 안정하다는 뜻이며 물리적으로 틀렸다** —
-α-NiS는 고온상이라 0 K에서 안정할 수 없다.
+Units are meV/atom. **A negative value would mean the NiAs-type phase is more stable than its
+decomposition products, which is physically wrong** — α-NiS is a high-temperature phase and
+cannot be stable at 0 K.
 
-### 다형체 서열 — 결정적 근거
+### Polymorph ordering — the decisive test
 
-실험적으로 millerite가 ~379 °C 아래에서 안정상이다.
+Experimentally millerite is the stable phase below about 379 °C.
 
 {order_table}
 
-**U=0만 실험을 맞춘다.** U≥2에서는 고온상이 저온상보다 안정하다고 예측한다.
+**Only U = 0 reproduces experiment.** At U ≥ 2 the calculation predicts the high-temperature
+phase to be more stable than the low-temperature one.
 
-### 격자 부피
+### Cell volume
 
-실험 α-NiS는 약 13.7 Å³/atom (a≈3.44, c≈5.35 Å).
-U=0이 13.28(−3%)로 가장 가깝고, U가 커질수록 모멘트 발현과 함께 부풀어
-U=7에서 15.26(+11%)까지 벌어진다.
+Experimental α-NiS is about 13.7 Å³/atom (a ≈ 3.44, c ≈ 5.35 Å). U = 0 comes closest at 13.28
+(−3 %), and the cell expands with U as the moment develops, reaching 15.26 (+11 %) at U = 7.
 
 ![U dependence](fig3_U_dependence.png)
 
-### 종합
+### Summary
 
-| 기준 | U=0 | U≥2 |
+| Criterion | U = 0 | U ≥ 2 |
 |---|:---:|:---:|
-| MP와의 일치 ({mad:.1f} meV/atom) | ○ | 비교 불가 |
-| millerite < NiAs형 (실험) | ○ | ✗ 역전 |
-| 격자 부피 | −3% | +2~11% |
+| Agreement with MP ({mad:.1f} meV/atom) | yes | not comparable |
+| millerite below NiAs-type (experiment) | yes | reversed |
+| Cell volume | −3 % | +2 to +11 % |
 
-**열역학은 U=0, 자성·포논은 U=7.** 두 결과는 병렬 제시하되 자유에너지를 섞지 말 것.
+**Thermodynamics at U = 0; magnetism and phonons at U = 7.** Report the two side by side and do
+not combine their free energies.
 
 ---
 
-## 7. 자성 상태
+## 7. Magnetic states
 
-hull의 모든 황화물은 FM 초기화 후 **무자성으로 수렴**했고, fcc Ni만 0.63 μB를 유지했다.
-U 없는 PBE에서 예상되는 거동이며 MP의 처리와 동일하다.
+Every sulfide on the hull converged to a **non-magnetic** solution from a ferromagnetic start;
+only fcc Ni retained a moment, 0.63 μB. That is the expected behaviour for PBE without U and
+matches MP's treatment.
 
-NiAs형 NiS를 AFM(Ni z=0 up / z=½ down, 포논 계산과 동일 배열)으로 별도 계산한 결과:
+NiAs-type NiS was additionally computed in the antiferromagnetic configuration used for the
+phonon calculation (Ni at z = 0 up, z = ½ down):
 
-| 상태 | U | E₀ (eV/4원자) | V (Å³) | m(Ni) μB |
+| State | U | E₀ (eV / 4 atoms) | V (Å³) | m(Ni) μB |
 |---|---:|---:|---:|---:|
 | NM | 0 | −20.31556799 | 53.10 | 0.000 |
 | AFM | 0 | −20.31544426 | 53.10 | **0.058** |
@@ -165,87 +179,81 @@ NiAs형 NiS를 AFM(Ni z=0 up / z=½ down, 포논 계산과 동일 배열)으로 
 | FM | 7 | −13.39569832 | 62.43 | 1.728 |
 | NM | 7 | −10.64006705 | 52.34 | 0.000 |
 
-**U=0에서 AFM은 사실상 존재하지 않는다** — 모멘트 0.058 μB, 에너지는 NM보다
-0.031 meV/atom 오히려 높다(잡음 수준의 축퇴). 따라서 {nias_hull:.1f} meV/atom은
-상한이 아니라 확정값이다.
+**At U = 0 the AFM solution barely exists** — a moment of 0.058 μB, and an energy 0.031 meV/atom
+*above* NM, a degeneracy at the level of numerical noise. The value {nias_hull:.1f} meV/atom is
+therefore a determination, not an upper bound.
 
-U=7에서는 견고한 AFM(1.63 μB)이 나오며, FM보다 51 meV/atom, NM보다 740 meV/atom 낮다.
-셀 팽창은 U가 아니라 **모멘트 형성**이 일으킨다 — U=7에서도 NM은 오히려 수축한다(52.34 Å³).
+At U = 7 a robust AFM state appears (1.63 μB), lying 51 meV/atom below FM and 740 meV/atom below
+NM. The cell expansion is driven by **moment formation rather than by U itself**: at U = 7 the NM
+solution actually contracts, to 52.34 Å³.
 
-> millerite는 Ni가 3개(홀수)라 보상된 collinear AFM이 불가능하다. 최소 2배 셀이 필요하고,
-> R3m에서 3개 Ni가 대칭 등가라 collinear AFM은 기하학적으로 frustrated이다.
-> 다만 millerite는 실험적으로 Pauli 상자성 금속이므로 NM이 실제 바닥상태이며,
-> 각 상을 각자의 자성 바닥상태에 두는 현재 처리가 옳다.
+> Millerite has three Ni atoms per cell, an odd number, so a compensated collinear AFM state is
+> impossible; it would need at least a doubled cell, and in R3m the three Ni sites are
+> symmetry-equivalent, which makes collinear AFM geometrically frustrated. Millerite is however a
+> Pauli-paramagnetic metal experimentally, so NM is its true ground state, and placing each phase
+> in its own magnetic ground state — as done here — is the correct treatment.
 
 ---
 
-## 8. 다형체 탐색 범위
+## 8. Scope of the polymorph search
 
-`structures_all/`에 MP에서 27개를 받아 그중 9개를 계산했다. 미사용 18개는
-MP 기준으로 전부 hull 위이며, 그 여유폭(원소 S 제외 시 최소 21 meV/atom)이
-본 계산의 MP 대비 오차 {mad:.1f} meV/atom보다 훨씬 크다 — 추가해도 hull은 바뀌지 않는다.
+Twenty-seven structures were retrieved from MP and nine of them computed. The eighteen that were
+not computed all lie above the hull according to MP, and their margin — at least 21 meV/atom once
+elemental S is excluded — is far larger than this calculation's {mad:.1f} meV/atom deviation from
+MP, so including them would not change the hull.
 
-| 조성 | 미사용 구조 (MP E_hull, meV/atom) |
+| Composition | Structures not used (MP E_hull, meV/atom) |
 |---|---|
 | Ni (1) | hcp P6₃/mmc (45.8) |
 | NiS₂ (3) | Pnnm (21.3), R-3m (35.0), Fd-3m (43.8) |
 | S (14) | P2₁ (0.4), P2/c (0.9), P2 (6.3), Pnnm (10.3), P2₁/c (12.3), … R-3 (51.2) |
 
-같은 조성에 구조를 둘 이상 계산한 것은 **NiS(2종)와 NiS₂(2종)**뿐이다.
-MP에도 NiS는 mp-594(NiAs형)와 mp-1547(millerite) 둘뿐이므로,
-"MP 전수와 일치한다"로 논거를 세우는 것이 안전하다.
+The only compositions for which more than one structure was computed are **NiS (2) and NiS₂ (2)**.
+MP likewise holds only two NiS entries, mp-594 (NiAs-type) and mp-1547 (millerite), so resting
+the argument on "agrees with every MP entry" is the safe formulation.
 
 ---
 
-## 9. 알려진 한계
+## 9. Known limitations
 
-- **U 스캔 40런 중 2건**이 완전 수렴이 아니다. `U6/Ni₉S₈`은 힘 기준을 −0.05 eV/Å로
-  완화했고(진동 구간 에너지 폭 0.24 meV/atom이라 영향 없음), `U6/NiS₂ P2₁/c`는
-  relax가 NSW를 소진했다(static 전자수렴은 정상). 후자는 U=6에서 hull 꼭짓점이
-  아니므로(pyrite가 0.239 eV/atom 낮음) 보고 수치에 들어가지 않는다.
-- U 스캔의 분해 산물은 FM 초기화다. 고 U에서 NiAs형만 AFM 이득을 받으므로
-  서열 역전이 부분적으로 자성 처리의 인공물일 수 있다. 다만 millerite는 실험적으로
-  모멘트가 없고 α-NiS는 있으므로 이 비대칭은 물리적으로도 타당하다.
-- MP2020 보정은 실험 생성엔탈피에 fit된 경험적 값이다. 절대 Ef를 인용할 때는
-  MP와 같은 척도라는 점을 명시하는 것이 안전하다.
+- **Two of the 40 U-scan runs** are not fully converged. `U6/Ni₉S₈` had its force criterion
+  relaxed to −0.05 eV/Å — the energy spread across the oscillating interval is 0.24 meV/atom, so
+  it does not matter — and `U6/NiS₂ P2₁/c` exhausted NSW during relaxation, although its static
+  electronic step converged normally. The latter is not a hull vertex at U = 6 (pyrite is
+  0.239 eV/atom lower), so it does not enter any reported number.
+- The decomposition products in the U scan are initialized ferromagnetically. At large U only the
+  NiAs-type phase gains an AFM stabilization, so the reversal of the polymorph ordering may be
+  partly an artefact of that asymmetry. It is nevertheless physically reasonable, since millerite
+  carries no moment experimentally and α-NiS does.
+- The MP2020 correction is an empirical value fitted to experimental formation enthalpies. When
+  quoting an absolute Ef it is safer to state that it is on the same scale as MP.
 
 ---
 
-## 10. 파일
+## 10. Files
 
 ```
-~/tgm-work/hull/
-├── NiS_formation_energy.md      이 문서
+hull/
 ├── fig1_convex_hull.png         Ni-S convex hull
-├── fig2_mp_validation.png       MP 대비 검증 (parity + 편차)
-├── fig3_U_dependence.png        U 의존성 3분할
-├── hull_final.tsv               결과 표 (15개 열)
-├── hull_final.json              기계 판독용
-├── hull_final_report.txt        전체 리포트 원문
-├── hull_NiS_MP2020.png          서버에서 생성한 hull 그림
-├── uscan/                       U 스캔 (리포트·그림·요약 JSON)
-└── scripts/                     재현용 스크립트 전체
+├── fig2_mp_validation.png       validation against MP (parity and deviation)
+├── fig3_U_dependence.png        U dependence, three panels
+├── hull_final.tsv               result table (15 columns)
+├── hull_final.json              machine-readable
+├── hull_final_report.txt        full report
+├── uscan/                       U scan (report, figures, summary JSON)
+└── scripts/                     the scripts needed to reproduce all of the above
 ```
 
-서버 재현:
+Reproducing the analysis, from the directory holding `hull_final.json`:
 
 ```bash
-ssh MASTER
-cd ~/NiS_hull
-bash scripts/status.sh                        # 9상 상태
-~/venvs/pmg/bin/python scripts/hull_quick.py  # 표 + hull 그림
-~/venvs/pmg/bin/python scripts/mu_test.py     # 기준물질 무관성 검증
-~/venvs/pmg/bin/python scripts/analyze_uscan.py   # U 스캔
+python hull_quick.py      # table and hull figure
+python mu_test.py         # reference-state independence
+python analyze_uscan.py   # U scan
+python make_report.py     # regenerate this document
 ```
 
-로컬 그림·문서 재생성:
-
-```bash
-cd ~/tgm-work/hull
-python3 scripts/make_figures.py
-python3 scripts/make_report.py
-```
-
-`~/venvs/pmg`는 pymatgen 2026.8.13 전용 venv (TGM에 새로 구축).
-TGM 파티션 중 **g1·g2는 AVX가 없어** VASP 빌드가 `illegal instruction`으로 즉사한다 —
-`g3,g4,g5,g6`만 사용할 것.
+These require pymatgen; version 2026.8.13 was used here, and the pinned environment is in the
+repository root. One practical note for anyone rebuilding VASP: some compute partitions lack AVX
+support, and a binary built with it dies immediately with `illegal instruction`, so check the
+target architecture before building.

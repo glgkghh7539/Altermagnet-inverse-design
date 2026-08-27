@@ -11,7 +11,7 @@
    "is_stable": true,
    "theoretical": false,
    "tag": "mp-23_Ni_Fm-3m",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-23_Ni_Fm-3m.vasp"
+   "poscar": "structures/mp-23_Ni_Fm-3m.vasp"
   },
   {
    "material_id": "mp-10257",
@@ -24,7 +24,7 @@
    "is_stable": false,
    "theoretical": false,
    "tag": "mp-10257_Ni_P6_3mmc",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-10257_Ni_P6_3mmc.vasp"
+   "poscar": "structures/mp-10257_Ni_P6_3mmc.vasp"
   },
   {
    "material_id": "mp-1008728",
@@ -125,7 +125,7 @@
    "is_stable": true,
    "theoretical": false,
    "tag": "mp-362_Ni3S2_R32",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-362_Ni3S2_R32.vasp"
+   "poscar": "structures/mp-362_Ni3S2_R32.vasp"
   },
   {
    "material_id": "mp-850086",
@@ -171,7 +171,7 @@
    "is_stable": true,
    "theoretical": false,
    "tag": "mp-1050_Ni3S4_Fd-3m",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-1050_Ni3S4_Fd-3m.vasp"
+   "poscar": "structures/mp-1050_Ni3S4_Fd-3m.vasp"
   },
   {
    "material_id": "mp-1219994",
@@ -206,7 +206,7 @@
    "is_stable": true,
    "theoretical": true,
    "tag": "mp-976920_Ni9S8_C222",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-976920_Ni9S8_C222.vasp"
+   "poscar": "structures/mp-976920_Ni9S8_C222.vasp"
   },
   {
    "material_id": "mp-1202035",
@@ -241,7 +241,7 @@
    "is_stable": false,
    "theoretical": false,
    "tag": "mp-1547_NiS_R3m",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-1547_NiS_R3m.vasp"
+   "poscar": "structures/mp-1547_NiS_R3m.vasp"
   },
   {
    "material_id": "mp-2282",
@@ -254,7 +254,7 @@
    "is_stable": false,
    "theoretical": false,
    "tag": "mp-2282_NiS2_Pa-3",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-2282_NiS2_Pa-3.vasp"
+   "poscar": "structures/mp-2282_NiS2_Pa-3.vasp"
   },
   {
    "material_id": "mp-849053",
@@ -278,7 +278,7 @@
    "is_stable": false,
    "theoretical": true,
    "tag": "mp-849059_NiS2_Pnnm",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-849059_NiS2_Pnnm.vasp"
+   "poscar": "structures/mp-849059_NiS2_Pnnm.vasp"
   },
   {
    "material_id": "mp-849075",
@@ -379,7 +379,7 @@
    "is_stable": true,
    "theoretical": true,
    "tag": "mp-1180046_NiS2_P2_1c",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-1180046_NiS2_P2_1c.vasp"
+   "poscar": "structures/mp-1180046_NiS2_P2_1c.vasp"
   },
   {
    "material_id": "mp-1411545",
@@ -392,7 +392,7 @@
    "is_stable": false,
    "theoretical": true,
    "tag": "mp-1411545_NiS2_R-3m",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-1411545_NiS2_R-3m.vasp"
+   "poscar": "structures/mp-1411545_NiS2_R-3m.vasp"
   },
   {
    "material_id": "mp-1444811",
@@ -405,7 +405,7 @@
    "is_stable": false,
    "theoretical": true,
    "tag": "mp-1444811_NiS2_Fd-3m",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-1444811_NiS2_Fd-3m.vasp"
+   "poscar": "structures/mp-1444811_NiS2_Fd-3m.vasp"
   },
   {
    "material_id": "mp-7",
@@ -418,7 +418,7 @@
    "is_stable": false,
    "theoretical": false,
    "tag": "mp-7_S_R-3",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-7_S_R-3.vasp"
+   "poscar": "structures/mp-7_S_R-3.vasp"
   },
   {
    "material_id": "mp-77",
@@ -431,7 +431,7 @@
    "is_stable": true,
    "theoretical": false,
    "tag": "mp-77_S_Fddd",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-77_S_Fddd.vasp"
+   "poscar": "structures/mp-77_S_Fddd.vasp"
   },
   {
    "material_id": "mp-83",
@@ -455,7 +455,7 @@
    "is_stable": false,
    "theoretical": false,
    "tag": "mp-96_S_P2c",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-96_S_P2c.vasp"
+   "poscar": "structures/mp-96_S_P2c.vasp"
   },
   {
    "material_id": "mp-10869",
@@ -479,7 +479,7 @@
    "is_stable": false,
    "theoretical": false,
    "tag": "mp-555760_S_P3_221",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-555760_S_P3_221.vasp"
+   "poscar": "structures/mp-555760_S_P3_221.vasp"
   },
   {
    "material_id": "mp-555915",
@@ -492,7 +492,7 @@
    "is_stable": false,
    "theoretical": false,
    "tag": "mp-555915_S_P2_12_12_1",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-555915_S_P2_12_12_1.vasp"
+   "poscar": "structures/mp-555915_S_P2_12_12_1.vasp"
   },
   {
    "material_id": "mp-556269",
@@ -527,7 +527,7 @@
    "is_stable": false,
    "theoretical": false,
    "tag": "mp-557376_S_C2c",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-557376_S_C2c.vasp"
+   "poscar": "structures/mp-557376_S_C2c.vasp"
   },
   {
    "material_id": "mp-557488",
@@ -540,7 +540,7 @@
    "is_stable": false,
    "theoretical": false,
    "tag": "mp-557488_S_P2_1c",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-557488_S_P2_1c.vasp"
+   "poscar": "structures/mp-557488_S_P2_1c.vasp"
   },
   {
    "material_id": "mp-557559",
@@ -564,7 +564,7 @@
    "is_stable": false,
    "theoretical": false,
    "tag": "mp-557869_S_P2_1",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-557869_S_P2_1.vasp"
+   "poscar": "structures/mp-557869_S_P2_1.vasp"
   },
   {
    "material_id": "mp-558014",
@@ -577,7 +577,7 @@
    "is_stable": false,
    "theoretical": false,
    "tag": "mp-558014_S_Pnnm",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-558014_S_Pnnm.vasp"
+   "poscar": "structures/mp-558014_S_Pnnm.vasp"
   },
   {
    "material_id": "mp-558964",
@@ -590,7 +590,7 @@
    "is_stable": false,
    "theoretical": false,
    "tag": "mp-558964_S_Pbcn",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-558964_S_Pbcn.vasp"
+   "poscar": "structures/mp-558964_S_Pbcn.vasp"
   },
   {
    "material_id": "mp-561370",
@@ -603,7 +603,7 @@
    "is_stable": false,
    "theoretical": false,
    "tag": "mp-561370_S_Pca2_1",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-561370_S_Pca2_1.vasp"
+   "poscar": "structures/mp-561370_S_Pca2_1.vasp"
   },
   {
    "material_id": "mp-561513",
@@ -616,7 +616,7 @@
    "is_stable": false,
    "theoretical": false,
    "tag": "mp-561513_S_P-1",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-561513_S_P-1.vasp"
+   "poscar": "structures/mp-561513_S_P-1.vasp"
   },
   {
    "material_id": "mp-583072",
@@ -662,7 +662,7 @@
    "is_stable": false,
    "theoretical": true,
    "tag": "mp-666931_S_C2",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-666931_S_C2.vasp"
+   "poscar": "structures/mp-666931_S_C2.vasp"
   },
   {
    "material_id": "mp-684673",
@@ -686,7 +686,7 @@
    "is_stable": false,
    "theoretical": true,
    "tag": "mp-994911_S_P4mm",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-994911_S_P4mm.vasp"
+   "poscar": "structures/mp-994911_S_P4mm.vasp"
   },
   {
    "material_id": "mp-1063988",
@@ -787,7 +787,7 @@
    "is_stable": false,
    "theoretical": false,
    "tag": "mp-1977409_S_P2",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-1977409_S_P2.vasp"
+   "poscar": "structures/mp-1977409_S_P2.vasp"
   }
  ],
  "selected": [
@@ -802,7 +802,7 @@
    "is_stable": false,
    "theoretical": false,
    "tag": "mp-10257_Ni_P6_3mmc",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-10257_Ni_P6_3mmc.vasp"
+   "poscar": "structures/mp-10257_Ni_P6_3mmc.vasp"
   },
   {
    "material_id": "mp-23",
@@ -815,7 +815,7 @@
    "is_stable": true,
    "theoretical": false,
    "tag": "mp-23_Ni_Fm-3m",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-23_Ni_Fm-3m.vasp"
+   "poscar": "structures/mp-23_Ni_Fm-3m.vasp"
   },
   {
    "material_id": "mp-362",
@@ -828,7 +828,7 @@
    "is_stable": true,
    "theoretical": false,
    "tag": "mp-362_Ni3S2_R32",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-362_Ni3S2_R32.vasp"
+   "poscar": "structures/mp-362_Ni3S2_R32.vasp"
   },
   {
    "material_id": "mp-1050",
@@ -841,7 +841,7 @@
    "is_stable": true,
    "theoretical": false,
    "tag": "mp-1050_Ni3S4_Fd-3m",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-1050_Ni3S4_Fd-3m.vasp"
+   "poscar": "structures/mp-1050_Ni3S4_Fd-3m.vasp"
   },
   {
    "material_id": "mp-976920",
@@ -854,7 +854,7 @@
    "is_stable": true,
    "theoretical": true,
    "tag": "mp-976920_Ni9S8_C222",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-976920_Ni9S8_C222.vasp"
+   "poscar": "structures/mp-976920_Ni9S8_C222.vasp"
   },
   {
    "material_id": "mp-1547",
@@ -867,7 +867,7 @@
    "is_stable": false,
    "theoretical": false,
    "tag": "mp-1547_NiS_R3m",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-1547_NiS_R3m.vasp"
+   "poscar": "structures/mp-1547_NiS_R3m.vasp"
   },
   {
    "material_id": "mp-1180046",
@@ -880,7 +880,7 @@
    "is_stable": true,
    "theoretical": true,
    "tag": "mp-1180046_NiS2_P2_1c",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-1180046_NiS2_P2_1c.vasp"
+   "poscar": "structures/mp-1180046_NiS2_P2_1c.vasp"
   },
   {
    "material_id": "mp-849059",
@@ -893,7 +893,7 @@
    "is_stable": false,
    "theoretical": true,
    "tag": "mp-849059_NiS2_Pnnm",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-849059_NiS2_Pnnm.vasp"
+   "poscar": "structures/mp-849059_NiS2_Pnnm.vasp"
   },
   {
    "material_id": "mp-1411545",
@@ -906,7 +906,7 @@
    "is_stable": false,
    "theoretical": true,
    "tag": "mp-1411545_NiS2_R-3m",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-1411545_NiS2_R-3m.vasp"
+   "poscar": "structures/mp-1411545_NiS2_R-3m.vasp"
   },
   {
    "material_id": "mp-2282",
@@ -919,7 +919,7 @@
    "is_stable": false,
    "theoretical": false,
    "tag": "mp-2282_NiS2_Pa-3",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-2282_NiS2_Pa-3.vasp"
+   "poscar": "structures/mp-2282_NiS2_Pa-3.vasp"
   },
   {
    "material_id": "mp-1444811",
@@ -932,7 +932,7 @@
    "is_stable": false,
    "theoretical": true,
    "tag": "mp-1444811_NiS2_Fd-3m",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-1444811_NiS2_Fd-3m.vasp"
+   "poscar": "structures/mp-1444811_NiS2_Fd-3m.vasp"
   },
   {
    "material_id": "mp-561513",
@@ -945,7 +945,7 @@
    "is_stable": false,
    "theoretical": false,
    "tag": "mp-561513_S_P-1",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-561513_S_P-1.vasp"
+   "poscar": "structures/mp-561513_S_P-1.vasp"
   },
   {
    "material_id": "mp-1977409",
@@ -958,7 +958,7 @@
    "is_stable": false,
    "theoretical": false,
    "tag": "mp-1977409_S_P2",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-1977409_S_P2.vasp"
+   "poscar": "structures/mp-1977409_S_P2.vasp"
   },
   {
    "material_id": "mp-557869",
@@ -971,7 +971,7 @@
    "is_stable": false,
    "theoretical": false,
    "tag": "mp-557869_S_P2_1",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-557869_S_P2_1.vasp"
+   "poscar": "structures/mp-557869_S_P2_1.vasp"
   },
   {
    "material_id": "mp-666931",
@@ -984,7 +984,7 @@
    "is_stable": false,
    "theoretical": true,
    "tag": "mp-666931_S_C2",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-666931_S_C2.vasp"
+   "poscar": "structures/mp-666931_S_C2.vasp"
   },
   {
    "material_id": "mp-96",
@@ -997,7 +997,7 @@
    "is_stable": false,
    "theoretical": false,
    "tag": "mp-96_S_P2c",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-96_S_P2c.vasp"
+   "poscar": "structures/mp-96_S_P2c.vasp"
   },
   {
    "material_id": "mp-557488",
@@ -1010,7 +1010,7 @@
    "is_stable": false,
    "theoretical": false,
    "tag": "mp-557488_S_P2_1c",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-557488_S_P2_1c.vasp"
+   "poscar": "structures/mp-557488_S_P2_1c.vasp"
   },
   {
    "material_id": "mp-557376",
@@ -1023,7 +1023,7 @@
    "is_stable": false,
    "theoretical": false,
    "tag": "mp-557376_S_C2c",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-557376_S_C2c.vasp"
+   "poscar": "structures/mp-557376_S_C2c.vasp"
   },
   {
    "material_id": "mp-555915",
@@ -1036,7 +1036,7 @@
    "is_stable": false,
    "theoretical": false,
    "tag": "mp-555915_S_P2_12_12_1",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-555915_S_P2_12_12_1.vasp"
+   "poscar": "structures/mp-555915_S_P2_12_12_1.vasp"
   },
   {
    "material_id": "mp-561370",
@@ -1049,7 +1049,7 @@
    "is_stable": false,
    "theoretical": false,
    "tag": "mp-561370_S_Pca2_1",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-561370_S_Pca2_1.vasp"
+   "poscar": "structures/mp-561370_S_Pca2_1.vasp"
   },
   {
    "material_id": "mp-558014",
@@ -1062,7 +1062,7 @@
    "is_stable": false,
    "theoretical": false,
    "tag": "mp-558014_S_Pnnm",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-558014_S_Pnnm.vasp"
+   "poscar": "structures/mp-558014_S_Pnnm.vasp"
   },
   {
    "material_id": "mp-558964",
@@ -1075,7 +1075,7 @@
    "is_stable": false,
    "theoretical": false,
    "tag": "mp-558964_S_Pbcn",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-558964_S_Pbcn.vasp"
+   "poscar": "structures/mp-558964_S_Pbcn.vasp"
   },
   {
    "material_id": "mp-77",
@@ -1088,7 +1088,7 @@
    "is_stable": true,
    "theoretical": false,
    "tag": "mp-77_S_Fddd",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-77_S_Fddd.vasp"
+   "poscar": "structures/mp-77_S_Fddd.vasp"
   },
   {
    "material_id": "mp-994911",
@@ -1101,7 +1101,7 @@
    "is_stable": false,
    "theoretical": true,
    "tag": "mp-994911_S_P4mm",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-994911_S_P4mm.vasp"
+   "poscar": "structures/mp-994911_S_P4mm.vasp"
   },
   {
    "material_id": "mp-7",
@@ -1114,7 +1114,7 @@
    "is_stable": false,
    "theoretical": false,
    "tag": "mp-7_S_R-3",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-7_S_R-3.vasp"
+   "poscar": "structures/mp-7_S_R-3.vasp"
   },
   {
    "material_id": "mp-555760",
@@ -1127,7 +1127,7 @@
    "is_stable": false,
    "theoretical": false,
    "tag": "mp-555760_S_P3_221",
-   "poscar": "/home/glgkgh7539/NiS_hull/structures/mp-555760_S_P3_221.vasp"
+   "poscar": "structures/mp-555760_S_P3_221.vasp"
   }
  ],
  "ehull_cut": 0.06

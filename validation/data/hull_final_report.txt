@@ -28,11 +28,11 @@ mp-77_S_Fddd                    1.000 |    0.0000      0.0 |    0.0000      0.0*
    mp-362_Ni3S2_R32                  +3.1 meV/atom
    mean |deviation| = 1.9 meV/atom over 6 compounds
 
- hull figure -> /home/glgkgh7539/NiS_hull/hull_NiS_MP2020.png
+ hull figure -> hull_NiS_MP2020.png
 
 == decomposition of metastable phases (MP2020 hull) ==
   mp-1547_NiS_R3m                   15.0 meV/atom  ->  0.708 Ni9S8 + 0.292 Ni3S4
   mp-2282_NiS2_Pa-3                 15.6 meV/atom  ->  1.000 NiS2  (same composition: mp-1180046_NiS2_P2_1c)
   local-NiAs_NiS_P6_3mmc           106.8 meV/atom  ->  0.708 Ni9S8 + 0.292 Ni3S4
 
- data -> /home/glgkgh7539/NiS_hull/hull_final.json
+ data -> hull_final.json
