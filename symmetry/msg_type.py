@@ -1,6 +1,20 @@
 #!/usr/bin/env python
 """Extract the magnetic space group type (I-IV) of the 322 parents and cross-check it
-against the sublattice-connecting-operation classification."""
+against the sublattice-connecting-operation classification.
+
+    python symmetry/msg_type.py <poscar dir> <name list> <out.csv> <symprec> [axis]
+
+`axis` chooses what the moments are handed to spglib as, and it changes the answer, because
+the MSG acts on them as axial vectors:
+
+    collinear   scalar +1 / -1, no direction - spglib's collinear dataset (the default)
+    a, b, c     an axial vector along that lattice vector
+    x, y, z     an axial vector along that Cartesian direction
+
+The connecting-operation classification in altermag_sym.py does not depend on this, being
+computed from the crystal structure, but the MSG type does, so the two are not
+interchangeable. The calculations in this work impose the moments along c.
+"""
 import sys, os, csv, warnings, numpy as np
 warnings.filterwarnings('ignore')
 import spglib
@@ -24,6 +38,20 @@ def read(p):
     for s_,c in zip(sp,cnt): species+=[s_]*c
     return lat, co%1.0, species
 zipdir, listfile, out, sp_ = sys.argv[1], sys.argv[2], sys.argv[3], float(sys.argv[4])
+AXIS = (sys.argv[5] if len(sys.argv) > 5 else 'collinear').lower()
+if AXIS not in ('collinear', 'a', 'b', 'c', 'x', 'y', 'z'):
+    sys.exit(f'axis must be collinear, a, b, c, x, y or z (got {AXIS!r})')
+def moments(lat, n_sites, mi):
+    """The magmom argument for spglib: scalars for `collinear`, axial vectors otherwise."""
+    if AXIS == 'collinear':
+        mm=[0.0]*n_sites; mm[mi[0]]=1.0; mm[mi[1]]=-1.0
+        return mm
+    if AXIS in 'abc':
+        v=lat['abc'.index(AXIS)]; v=v/np.linalg.norm(v)
+    else:
+        v=np.eye(3)['xyz'.index(AXIS)]
+    mm=np.zeros((n_sites,3)); mm[mi[0]]=v; mm[mi[1]]=-v
+    return mm
 names=[l.strip() for l in open(listfile) if l.strip()]
 rows=[]
 for i,n in enumerate(names):
@@ -33,7 +61,7 @@ for i,n in enumerate(names):
         lat,co,species=read(f); nums=[Z.get(x,0) for x in species]
         mi=[j for j,x in enumerate(species) if x in MAG]
         if len(mi)!=2: continue
-        mm=[0.0]*len(species); mm[mi[0]]=1.0; mm[mi[1]]=-1.0
+        mm=moments(lat, len(species), mi)
         md=spglib.get_magnetic_symmetry_dataset((lat,co,nums,mm), symprec=sp_)
         uni=md.uni_number; t=md.msg_type
         mt=spglib.get_magnetic_spacegroup_type(uni)
@@ -45,5 +73,5 @@ csv.DictWriter(open(out,'w',newline=''),fieldnames=['filename','msg_type','bns',
 import collections
 c=collections.Counter(r['msg_type'] for r in rows)
 NAMES={1:'type I (colorless)',2:'type II (grey, paramagnetic)',3:'type III (black-white, no antitranslation)',4:'type IV (black-white, with antitranslation)',0:'determination failed'}
-print(f'\n{len(rows)} structures  symprec={sp_}')
+print(f'\n{len(rows)} structures  symprec={sp_}  axis={AXIS}')
 for k,v in sorted(c.items()): print(f'  {NAMES[k]:42s} {v:4d}  ({100*v/len(rows):.1f}%)')

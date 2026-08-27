@@ -21,7 +21,14 @@ Inputs, all under data/:
     magnetic_symmetry_all_symprec001.csv    the same at symprec 0.01, the tolerance the
                                             response letter reports alongside it
     magnetic_symmetry_parents.csv           the same, per parent
-    magnetic_spacegroup_type_parents.csv    MSG type and the BNS / UNI numbers
+    magnetic_spacegroup_type_parents.csv    MSG type and the BNS / UNI numbers, with the
+                                            moments given as collinear scalars
+    magnetic_spacegroup_type_parents_c.csv  the same with the moments along c, the direction
+                                            the calculations impose. The MSG acts on them as
+                                            axial vectors, so the type differs: 96 of the 322
+                                            parents change, all of them between type I and
+                                            type III. The two splitting-forbidding classes do
+                                            not move.
     raw/local_moments.csv                   the signed moments, m1 and m2, read back out
                                             of every stored OUTCAR by
                                             screening/extract_moments.py
@@ -69,6 +76,7 @@ def main():
     tight = pd.read_csv(os.path.join(DATA, 'magnetic_symmetry_all_symprec001.csv'))
     par = pd.read_csv(os.path.join(DATA, 'magnetic_symmetry_parents.csv'))
     msg = pd.read_csv(os.path.join(DATA, 'magnetic_spacegroup_type_parents.csv'))
+    msg_c = pd.read_csv(os.path.join(DATA, 'magnetic_spacegroup_type_parents_c.csv'))
     sgn = pd.read_csv(os.path.join(DATA, 'raw', 'spin_splitting_summary.csv'))
     lm_path = os.path.join(DATA, 'raw', 'local_moments.csv')
     lm = pd.read_csv(lm_path) if os.path.isfile(lm_path) else None
@@ -100,6 +108,9 @@ def main():
                                                       'verdict': 'parent_verdict'})
     t = t.merge(pm, on='parent', how='left')
     t = t.merge(msg.rename(columns={'filename': 'parent'}), on='parent', how='left')
+    t = t.merge(msg_c.rename(columns={'filename': 'parent', 'msg_type': 'msg_type_c',
+                                      'bns': 'bns_c', 'uni': 'uni_c'}),
+                on='parent', how='left')
 
     for col, label in ((t.verdict, 'magnetic_symmetry_all'),
                        (t.parent_verdict, 'magnetic_symmetry_parents'),
@@ -140,7 +151,8 @@ def main():
     cols = ['filename', 'structure', 'parent', 'is_parent', 'strain',
             'verdict', 'ops', 'n_ops', 'nsym', 'spacegroup',
             'verdict_symprec001', 'ops_symprec001', 'n_ops_symprec001',
-            'parent_verdict', 'verdict_same_as_parent', 'msg_type', 'bns', 'uni',
+            'parent_verdict', 'verdict_same_as_parent',
+            'msg_type', 'bns', 'uni', 'msg_type_c', 'bns_c', 'uni_c',
             'sse_eV', 'gamma_avg_meV',
             'm1_muB', 'm2_muB', 'm1_abs_muB', 'm_asymmetry_muB', 'antiparallel',
             'm_total_abs_muB']
@@ -166,9 +178,12 @@ def main():
     }).reset_index()
     p = (par.rename(columns={'filename': 'parent', 'sg': 'spacegroup'})
             .merge(msg.rename(columns={'filename': 'parent'}), on='parent')
+            .merge(msg_c.rename(columns={'filename': 'parent', 'msg_type': 'msg_type_c',
+                                         'bns': 'bns_c', 'uni': 'uni_c'}), on='parent')
             .merge(p, on='parent'))
     p = p[['parent', 'verdict', 'ops', 'n_ops', 'nsym', 'spacegroup',
-           'msg_type', 'bns', 'uni'] + [c for c in p.columns if c.startswith(
+           'msg_type', 'bns', 'uni', 'msg_type_c', 'bns_c', 'uni_c'] + [
+               c for c in p.columns if c.startswith(
                ('n_', 'sse_', 'gamma_', 'm1_', 'm_'))
                and c not in ('n_ops', 'nsym')]]
     p = p.sort_values('sse_max_eV', ascending=False).reset_index(drop=True)
@@ -182,7 +197,10 @@ def main():
 
     print(f'\n  parents {len(p)}   structures {len(t)}')
     print('  parent verdict :', p.verdict.value_counts().to_dict())
-    print('  MSG type       :', p.msg_type.value_counts().sort_index().to_dict())
+    print('  MSG type       :', p.msg_type.value_counts().sort_index().to_dict(),
+          ' (collinear)')
+    print('  MSG type along c:', p.msg_type_c.value_counts().sort_index().to_dict(),
+          f' - {int((p.msg_type != p.msg_type_c).sum())} parents differ')
     print(f'  m2 known for   : {int(t.m2_muB.notna().sum()):,} of {len(t):,} structures')
     k = t.antiparallel == True
     print(f'  antiparallel   : {int(k.sum()):,} of {int(t.m2_muB.notna().sum()):,} '

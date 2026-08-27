@@ -1,7 +1,7 @@
 c28fa6059f1cca7d349e2ccf00ed9c24  .gitignore
 ef168a97753ca558e4d31e5765cf5753  CITATION.cff
 f532c2cf38e95c0b7b57af7c2e5f1bf2  LICENSE
-15ca194cb3c95ab76308f907d2e05591  README.md
+26261d9b117ccc048290dd5e04d6af6d  README.md
 260797716269a66882b06ac67c4df3ba  analysis/cohort/am_only.log
 fb2a0d8c473c2e249a466e04d0673b4f  analysis/cohort/am_only.py
 280f514fe505efbf9bfee775b4b4f37e  analysis/cohort/cohort_baseline_seeds.csv
@@ -18,10 +18,10 @@ fdf75f972ecb53c214f3b42090d2c0c4  analysis/prototype_match.py
 abd9baacbd66fec11f3058739a366800  analysis/structure_check.py
 09ca7e83efe8368e02dc79bdb9632248  data/Altermagnetism_full_data.csv
 1228256ee70c570b2092f32af4f6f42e  data/candidate_master.csv
-1355ca9df306fcf06eae45341c9ffd63  data/derived/altermagnet_classification.csv
-85fe227792efefb373c7e980316f7277  data/derived/altermagnet_classification_parents.csv
+3f9fea07dd919a6b30931eba022affde  data/derived/altermagnet_classification.csv
+7946e3a6b375f96e3a436ee4e7a9a53b  data/derived/altermagnet_classification_parents.csv
 c6092b54a4e5fcd57321243954a9f09a  data/derived/candidates_sse.csv
-5d5b670b594580cb03fecf20691a8b96  data/derived/make_classification_tables.py
+cad88f6c2e9cbf1fb86bebece62172ec  data/derived/make_classification_tables.py
 d7f73a426b0284c9f269b327363bb10d  data/derived/shap200_bzmean.csv
 e1f242c67277b9cced00424fac4773ad  data/derived/shap200_p95.csv
 44cc276690f85e6bf1ec144a28b0e82a  data/derived/shap200_sse_max_new.csv
@@ -38,6 +38,7 @@ ee8df54e2542a1409616ccd7f547e2ea  data/derived/shap200f_sse_max_new.csv
 e6efa647c916f6b4ab74efac02849e7b  data/fin_data.csv
 2ddbb1d9c98c6d6a7bb767368083a0f4  data/fin_data_mpf_deterministic.csv
 639871e446f138bec71e37f6a12a82d9  data/magnetic_spacegroup_type_parents.csv
+ad903aa6206ec79f261f51d4ad00fb2a  data/magnetic_spacegroup_type_parents_c.csv
 1c611353c9831e0c05c6fa105f1cc8eb  data/magnetic_symmetry_all.csv
 4705e3966079ee958b174dc910be2226  data/magnetic_symmetry_all_symprec001.csv
 d1d9e20881a2451065e2a28cec6afe17  data/magnetic_symmetry_parents.csv
@@ -261,7 +262,7 @@ f50937b925206b000b72a57e66d07cba  structures/FeS_relaxed.vasp
 7e8fa5928a2b1906d1c71f2b75a4a347  symmetry/altermag_batch.py
 09976d8801c075ee77601e7520b179f3  symmetry/altermag_sym.py
 91758e9b25bbc2b06ede0ef182a151c9  symmetry/cand_table.py
-a6d73f8783bdcc2837b8102ef5fe16b6  symmetry/msg_type.py
+7dad6c196de59ae66e45bbb7c3409de1  symmetry/msg_type.py
 dcf4f844c07d3f7cb1d4c0e2d831acdc  validation/analyze_uscan.py
 020c3acd5b5d7e4c17e4d2509a739185  validation/data/hull_final.json
 4442db64555e890c6bc13f14842af2f3  validation/data/hull_final.tsv

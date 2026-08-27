@@ -150,7 +150,8 @@ What the tables say:
 | | |
 |---|---|
 | parent verdicts | `ALTERMAGNET` 243, `conventional_AFM_inversion` 57, `compensated_FiM_candidate` 12, `conventional_AFM_translation` 10 |
-| MSG type | type III 300, type I 12, type IV 9, unresolved 1 |
+| MSG type, moments as collinear scalars | type III 300, type I 12, type IV 9, unresolved 1 |
+| MSG type, moments along **c** — the direction the calculations impose | type III 212, type I 100, type IV 9, unresolved 1. The MSG acts on the moments as axial vectors, so 96 of the 322 parents change type: 92 altermagnets from III to I, and 4 ferrimagnet candidates the other way. The two splitting-forbidding classes do not move — inversion-connected stay 57 × III, translation-connected 9 × IV. Both determinations are in the tables, as `msg_type` and `msg_type_c` |
 | sublattice operation | `mirror/rotoinv\|rotation` 211, `inversion\|mirror/rotoinv\|rotation` 22, `rotation` 19, none found 12 |
 | **strain changes the verdict** | **87 of 3,524 strained children (2.5 %)**; 78 of them are parents classified `ALTERMAGNET` whose strained child falls back to `compensated_FiM_candidate` |
 | **the two local moments** | known for **all 3,845**; antiparallel in **3,839 (99.8 %)**, and \|\|m₁\|−\|m₂\|\| never exceeds **0.006 μB** (median 0.0000, p99 0.0040) |
