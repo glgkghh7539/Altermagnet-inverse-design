@@ -1,7 +1,7 @@
 c28fa6059f1cca7d349e2ccf00ed9c24  .gitignore
 ef168a97753ca558e4d31e5765cf5753  CITATION.cff
 f532c2cf38e95c0b7b57af7c2e5f1bf2  LICENSE
-32af8085a541e88afe9edfb3f69c0803  README.md
+df3302f27053340b896a9d28c83bbd84  README.md
 260797716269a66882b06ac67c4df3ba  analysis/cohort/am_only.log
 fb2a0d8c473c2e249a466e04d0673b4f  analysis/cohort/am_only.py
 280f514fe505efbf9bfee775b4b4f37e  analysis/cohort/cohort_baseline_seeds.csv
@@ -18,10 +18,10 @@ fdf75f972ecb53c214f3b42090d2c0c4  analysis/prototype_match.py
 abd9baacbd66fec11f3058739a366800  analysis/structure_check.py
 09ca7e83efe8368e02dc79bdb9632248  data/Altermagnetism_full_data.csv
 1228256ee70c570b2092f32af4f6f42e  data/candidate_master.csv
-c9c2e90f3c0fd4fcb719732973e47180  data/derived/altermagnet_classification.csv
-5b992a6c5ef137097dd63862dac3153b  data/derived/altermagnet_classification_parents.csv
+af27dbf933ebb3a7741d0d7769ebed2b  data/derived/altermagnet_classification.csv
+e402cc68758800ce76827c1df6d37b0e  data/derived/altermagnet_classification_parents.csv
 c6092b54a4e5fcd57321243954a9f09a  data/derived/candidates_sse.csv
-170c9976983f1a4b6328778415ce1ccb  data/derived/make_classification_tables.py
+fa1edfd1abd62993c9f15f3ca13d0875  data/derived/make_classification_tables.py
 d7f73a426b0284c9f269b327363bb10d  data/derived/shap200_bzmean.csv
 e1f242c67277b9cced00424fac4773ad  data/derived/shap200_p95.csv
 44cc276690f85e6bf1ec144a28b0e82a  data/derived/shap200_sse_max_new.csv
@@ -42,6 +42,7 @@ e6efa647c916f6b4ab74efac02849e7b  data/fin_data.csv
 d1d9e20881a2451065e2a28cec6afe17  data/magnetic_symmetry_parents.csv
 ebbf7b479368f78aa3885926ba32de6d  data/prescreening_table.csv
 6cef828e5bf9d9b09ec1ff8228157444  data/raw/convergence_126runs.csv
+2b94c9b4cc31d36579c92534a8024905  data/raw/local_moments.csv
 2feff8782c9d36ccdbc8116c4b5921c5  data/raw/magnetization.csv
 a67d1405260464dba47851f6cca52383  data/raw/orbital_match_all.csv
 3aaebff538cbef332b292b893d86c30e  data/raw/spin_splitting_summary.csv
@@ -247,6 +248,7 @@ f13daa03d0653acad092a219d92bf638  model/table2.py
 25b08b51f17da12f74b7a1de13c823a2  requirements.txt
 cf252abf59eb2ef676b6a23c382c808b  screening/SSE_ax.py
 1216ffe772def9c04ca5d9cf96580504  screening/SSE_calc.sh
+452b04643541cae7b4cc39f668b60e0d  screening/extract_moments.py
 d84bdd3f5d083112a2d08d6d3bdbd33e  screening/parse_eigenval.py
 b11a3edab4f954fad387cd2175bd6be6  structures/CoO_sp_relaxed.vasp
 41022752545ec2346fb476ad0b5082f4  structures/CoS_relaxed.vasp

@@ -19,13 +19,17 @@ Inputs, all under data/:
     magnetic_symmetry_all.csv               verdict + sublattice operation, per structure
     magnetic_symmetry_parents.csv           the same, per parent
     magnetic_spacegroup_type_parents.csv    MSG type and the BNS / UNI numbers
-    raw/spin_splitting_summary.csv          the signed moments, m1 and m2
+    raw/local_moments.csv                   the signed moments, m1 and m2, read back out
+                                            of every stored OUTCAR by
+                                            screening/extract_moments.py
+    raw/spin_splitting_summary.csv          the same, from the screening run, for the
+                                            subset it covered - used only as a fallback
 
 A note on signs. fin_data.csv carries magnitudes: its `ion1 tot` is |m1| and its `tot_mag`
-is |m_total|. The signed values live in raw/spin_splitting_summary.csv, and over the 2,565
-structures the two files share they agree exactly once the sign is taken off. The signed
-file is the older, smaller run, so m2 - and with it the antiparallel check and the moment
-asymmetry - is available for those 2,565 and blank for the other 1,280.
+is |m_total|. The signed values come from raw/local_moments.csv where it exists and from
+raw/spin_splitting_summary.csv otherwise; the two agree, and both agree with fin_data.csv
+once the sign is taken off, because all three trace back to the same
+parse_eigenval.check_magnetization().
 """
 import os
 import sys
@@ -62,6 +66,8 @@ def main():
     par = pd.read_csv(os.path.join(DATA, 'magnetic_symmetry_parents.csv'))
     msg = pd.read_csv(os.path.join(DATA, 'magnetic_spacegroup_type_parents.csv'))
     sgn = pd.read_csv(os.path.join(DATA, 'raw', 'spin_splitting_summary.csv'))
+    lm_path = os.path.join(DATA, 'raw', 'local_moments.csv')
+    lm = pd.read_csv(lm_path) if os.path.isfile(lm_path) else None
 
     t = fin[['filename', 'parent', 'sse', 'gamma point average splitting',
              'ion1 tot', 'tot_mag']].rename(columns={
@@ -90,10 +96,28 @@ def main():
             sys.exit(f'{int(col.isna().sum())} of {len(t)} rows did not join against '
                      f'{label}.csv - check the key columns')
 
-    # the signed moments
+    # the signed moments: the OUTCAR sweep first, the screening run for anything it missed
     s = sgn[['structure', 'ion1_tot', 'ion2_tot']].rename(columns={
         'structure': 'filename', 'ion1_tot': 'm1_muB', 'ion2_tot': 'm2_muB'})
+    if lm is not None:
+        s = (lm[['filename', 'm1_muB', 'm2_muB']]
+             .set_index('filename')
+             .combine_first(s.set_index('filename'))
+             .reset_index())
     t = t.merge(s, on='filename', how='left')
+    # The magnitudes in fin_data.csv are the check on the signed values: |m1_muB| has to
+    # reproduce `ion1 tot`. It does, to the last digit, for all but two structures, where
+    # the stored OUTCAR gives 3.793 against 3.795 and 2.250 against 2.251 - a re-run, and
+    # 0.002 muB either way. Anything past 0.005 muB is a different calculation, not
+    # rounding, and stops the build rather than going into the table unnoticed.
+    off = (t.m1_muB.abs() - t.m1_abs_muB).abs()
+    if (off > 5e-3).any():
+        sys.exit(f'{int((off > 5e-3).sum())} rows where |m1_muB| disagrees with '
+                 f"fin_data's `ion1 tot` by more than 0.005 muB")
+    near = t[(off > 5e-4) & (off <= 5e-3)]
+    for _, r in near.iterrows():
+        print(f'  [note] {r.filename}: OUTCAR gives |m1| = {abs(r.m1_muB):.3f}, '
+              f"fin_data has {r.m1_abs_muB:.3f}")
     both = t.m1_muB.notna() & t.m2_muB.notna()
     t['antiparallel'] = np.where(both, t.m1_muB * t.m2_muB < 0, None)
     t['m_asymmetry_muB'] = (t.m1_muB.abs() - t.m2_muB.abs()).abs()

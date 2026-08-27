@@ -151,17 +151,28 @@ What the tables say:
 | MSG type | type III 300, type I 12, type IV 9, unresolved 1 |
 | sublattice operation | `mirror/rotoinv\|rotation` 211, `inversion\|mirror/rotoinv\|rotation` 22, `rotation` 19, none found 12 |
 | **strain changes the verdict** | **87 of 3,524 strained children (2.5 %)**; 78 of them are parents classified `ALTERMAGNET` whose strained child falls back to `compensated_FiM_candidate` |
-| **the two local moments** | antiparallel in **2,562 of the 2,565** structures where both are known, and \|\|m₁\|−\|m₂\|\| never exceeds **0.006 μB** |
+| **the two local moments** | known for **all 3,845**; antiparallel in **3,839 (99.8 %)**, and \|\|m₁\|−\|m₂\|\| never exceeds **0.006 μB** (median 0.0000, p99 0.0040) |
+| the six that are not antiparallel | every one of them has \|m\| ≤ 0.008 μB — the weakly spin-polarized numerical solutions the referee asks about, now identifiable rather than hidden. 101 structures in all have \|m₁\| < 0.1 μB; the median over the cohort is 2.76 μB, and 2.59 μB over the rows classified `ALTERMAGNET` |
 | Γ-point average | of **absolute** differences; median 0.89 meV, 90th percentile 3.68, max 9.96 |
 
-**Signs.** `fin_data.csv` carries magnitudes - its `ion1 tot` is \|m₁\| and its `tot_mag` is
-\|m_total\|. The signed moments are in **`data/raw/spin_splitting_summary.csv`**, the direct
-output of `screening/SSE_ax.py`, which reads them out of the last `magnetization (x)` block
-of each OUTCAR through `check_magnetization()` in `screening/parse_eigenval.py`. Over the
-2,565 structures the two files share they agree exactly once the sign is removed. That
-signed run is the smaller one, so `m2_muB` is blank for the other 1,280 structures.
-**`data/raw/magnetization.csv`** is the \|m₁\| column for all 4,491 structures that were
-parsed, of which 3,845 survived screening.
+**Signs, and where the moments come from.** `fin_data.csv` carries magnitudes - its
+`ion1 tot` is \|m₁\| and its `tot_mag` is \|m_total\|. Three files carry the signed pair, all
+of them reading the last `magnetization (x)` block of the OUTCAR through the same
+`check_magnetization()` in `screening/parse_eigenval.py`:
+
+| File | Rows | How it was made |
+|---|---|---|
+| `data/raw/local_moments.csv` | 4,211 | `screening/extract_moments.py` re-reads every stored OUTCAR. This is what the tables use |
+| `data/raw/spin_splitting_summary.csv` | 3,207 | the direct output of `screening/SSE_ax.py` during screening; the fallback for structures whose OUTCAR is not on hand |
+| `data/raw/magnetization.csv` | 4,491 | \|m₁\| only, the column that became `fin_data.csv`'s `ion1 tot` |
+
+They agree. Over the 3,292 dataset structures whose OUTCAR was re-read, \|m₁\| reproduces
+`fin_data.csv` exactly for 3,290; the two exceptions are `POSCAR_Cr2F4_cluster2` (3.793
+against 3.795) and `POSCAR_Cr2F8_cluster2_st050` (2.250 against 2.251), which the build
+script prints. Together the three files give both moments for all 3,845 structures.
+
+The OUTCARs themselves are about 78 GB and are not deposited; `screening/extract_moments.py`
+is, and takes `--root` or `$OUTCAR_ROOT`.
 
 **`structures/POSCARS.zip`** holds 5,945 structures = 1,010 unstrained + 4,935 strained
 variants of those 1,010 parents. The 322 parents and 3,845 structures that passed screening are
