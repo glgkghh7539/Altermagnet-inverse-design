@@ -61,12 +61,18 @@ screening and ranking tool, not a substitute for a DFT calculation.
 ## Directory layout
 
 ```
-data/          fin_data.csv                   3,845 rows, 322 parents, 52 descriptors + SSE
+data/          fin_data.csv                   the cohort: 3,845 rows, 322 parents, 52 descriptors + SSE
+               prescreening_table.csv         4,483 rows, before screening
                candidate_master.csv           six candidates: SG/MSG, lattice, moments, energy differences
-               magnetic_symmetry_*.csv        symmetry classification results
-               raw/, derived/                 SSE variants, orbital matching, convergence and
-                                              per-target SHAP tables read by
-                                              analysis/point2_make_figures.py
+               README.md                      the inventory of the three tiers below
+  raw/         magnetic_symmetry_*.csv        connecting operation, symprec 0.05 and 0.01
+               magnetic_spacegroup_type_*.csv MSG type, with and without a Neel axis
+               local_moments.csv              both signed moments, from every OUTCAR
+               sse_variants_all.csv           the splitting under ten definitions
+               orbital_match_all.csv          rank vs orbital-character band pairing
+  derived/     altermagnet_classification*    symmetry + MSG + both moments + SSE, joined
+               typeA_all.csv                  band-pairing audit per structure
+               candidates_sse.csv, shap200*   candidate SSE variants, per-target SHAP
 descriptors/   descriptor.ipynb               descriptor computation (notebook, 25 cells)
                run_descriptors.py             batch execution of the notebook cells
                msbi_calc.py                   MSBI alone
