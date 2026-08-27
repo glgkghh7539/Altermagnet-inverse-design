@@ -10,7 +10,7 @@
 ---
 
 <p align="center">
-  <img src="workflow.png" alt="Workflow" width="800">
+  <img src="figure1.png" alt="Figure 1 — the pipeline: generation, screening, modeling, optimization, validation" width="820">
 </p>
 
 ## Overview

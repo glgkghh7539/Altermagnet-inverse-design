@@ -1,7 +1,7 @@
 c28fa6059f1cca7d349e2ccf00ed9c24  .gitignore
 ef168a97753ca558e4d31e5765cf5753  CITATION.cff
 f532c2cf38e95c0b7b57af7c2e5f1bf2  LICENSE
-de56590a7c6d25602c4054bc30b02a51  README.md
+d3a269aafce6f1014751a7d45448e91c  README.md
 260797716269a66882b06ac67c4df3ba  analysis/cohort/am_only.log
 0f31d8f237dbee18380f8153af0038a4  analysis/cohort/am_only.py
 280f514fe505efbf9bfee775b4b4f37e  analysis/cohort/cohort_baseline_seeds.csv
@@ -55,6 +55,8 @@ a67d1405260464dba47851f6cca52383  data/raw/orbital_match_all.csv
 50bed74040805df8a48bfcd7575effdc  descriptors/msbi_calc.py
 187d41bad451fa7da1bd1e13e98c0e18  descriptors/run_descriptors.py
 3ec575c2a5083c681ea7796ed8270db1  environment.yml
+930ed605f0e80f9b860b615867a5967e  figure1.pdf
+51cda03a9e7ce2089ba1a45151046ac2  figure1.png
 2f000a5a3d4b03eed33f4189397cda5a  figures/README.md
 50cee93ccd6817c420ffd8efa00b7268  figures/archive/KPS_DFT_free_BO_SGK_original.ipynb
 cecc1ee1f36357b917cf6fedb732c9b1  figures/archive/ORIGINAL_MD5.txt
@@ -289,5 +291,3 @@ c9672ecc73bbfc1f641f389672ee74d3  vasp/templates/CoS/KPOINTS
 1735dc7877ad4d8d186098af7c8ab826  vasp/templates/NiS/INCAR
 c9672ecc73bbfc1f641f389672ee74d3  vasp/templates/NiS/KPOINTS
 d2f3094e01e28383b8c2ca0eee2966e2  vasp/templates/Uscan/NiS/AFM/U4/INCAR
-bc4d5a11936eeb741fdaae127ab7715c  workflow.pdf
-b72ba2055bcc1c2d7f02541c86952659  workflow.png
