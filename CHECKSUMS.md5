@@ -55,8 +55,8 @@ a67d1405260464dba47851f6cca52383  data/raw/orbital_match_all.csv
 50bed74040805df8a48bfcd7575effdc  descriptors/msbi_calc.py
 187d41bad451fa7da1bd1e13e98c0e18  descriptors/run_descriptors.py
 3ec575c2a5083c681ea7796ed8270db1  environment.yml
-930ed605f0e80f9b860b615867a5967e  figure1.pdf
-51cda03a9e7ce2089ba1a45151046ac2  figure1.png
+05bbcd9799fef3e970020c68d7b30c88  figure1.pdf
+71903d06f70ecb7338673ee0925262e9  figure1.png
 2f000a5a3d4b03eed33f4189397cda5a  figures/README.md
 50cee93ccd6817c420ffd8efa00b7268  figures/archive/KPS_DFT_free_BO_SGK_original.ipynb
 cecc1ee1f36357b917cf6fedb732c9b1  figures/archive/ORIGINAL_MD5.txt
