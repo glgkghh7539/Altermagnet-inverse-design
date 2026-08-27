@@ -1,0 +1,61 @@
+ SYSTEM =
+ Starting parameters for this run:
+   NWRITE = 2          write-flag
+   ISTART = 0          job   : 0-new, 1-cont, 2-samecut
+   ICHARG = 2          charge: 0-wave, 1-file, 2-atom, >10-const
+   INIWAV = 1          electr: 0-lowe 1-rand  2-diag
+
+ Electronic Relaxation:
+   PREC = high         low | medium | high
+   ENCUT = 500         kinetic energy cutoff (eV)
+#   NBANDS = 64
+   ISPIN = 2
+   MAGMOM = 3 -3 99*0
+#   LSORBIT  .TRUE.
+
+   NELMDL = -9         number of delayed ELM steps
+   NELM = 200          number of ELM steps
+   EDIFF = 1E-06       energy stopping-criterion for ELM
+   LREAL = Auto        real-space projection (.FALSE., .TRUE., On, Auto)
+   IALGO = 38          algorithm (38=CG for small, 48=RMM for big systems)
+
+## Van der Waals
+   IVDW = 0
+   LCHARG = .TRUE.
+   LAECHG = .TRUE.
+   LWAVE = .TRUE.
+   LVTOT = .TRUE.
+
+   NSW = 200           max number of geometry steps
+   NELMIN = 6
+   IBRION = 2          ionic relax: 0-MD, 1-quasi-Newton, 2-CG, 3-Damped MD
+   EDIFFG = -0.01      force (eV/A) stopping-criterion for geometry steps
+   ISIF = 2            (1:force=y stress=trace only ions=y shape=n volume=n)
+   ISYM = 0            (1-use symmetry, 0-no symmetry)
+   POTIM = 0.15        initial time step for geo-opt (increase for soft sys)
+
+#  IDIPOL = 3
+#  DIPOL = 0.5 0.5 0.5
+#  LDIPOL = .TRUE.
+
+## GGA+U and LDA+U
+  LDAU = .TRUE.
+  LDAUTYPE = 2
+  LDAUL = 2 -1
+  LDAUU = 3.00 0.00
+  LDAUJ = 0.00 0.00
+  LDAUPRINT = 1
+  LMAXMIX = 4
+
+#  DOS related values:
+  ISMEAR = 0         (-5:tet_b,-4:tet,-3:scan,-1:Fermi,0:gaus,1:MP)
+  SIGMA = 0.01       broadening in eV
+#  NEDOS = 3000
+  LORBIT = 11
+#  EMIN = -20
+#  EMAX = 10
+
+#
+#   NPAR = 4
+   NCORE = 4
+   LPLANE = .TRUE.

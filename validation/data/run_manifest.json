@@ -1,0 +1,146 @@
+[
+ {
+  "tag": "local-NiAs_NiS_P6_3mmc",
+  "natoms": 4,
+  "arch": "avx2",
+  "formula": "NiS",
+  "k_relax": [
+   9,
+   9,
+   5
+  ],
+  "k_static": [
+   14,
+   14,
+   8
+  ]
+ },
+ {
+  "tag": "mp-1050_Ni3S4_Fd-3m",
+  "natoms": 14,
+  "arch": "avx2",
+  "formula": "Ni3S4",
+  "k_relax": [
+   5,
+   5,
+   5
+  ],
+  "k_static": [
+   8,
+   8,
+   8
+  ]
+ },
+ {
+  "tag": "mp-1180046_NiS2_P2_1c",
+  "natoms": 6,
+  "arch": "avx2",
+  "formula": "NiS2",
+  "k_relax": [
+   7,
+   7,
+   5
+  ],
+  "k_static": [
+   12,
+   12,
+   9
+  ]
+ },
+ {
+  "tag": "mp-1547_NiS_R3m",
+  "natoms": 6,
+  "arch": "avx2",
+  "formula": "NiS",
+  "k_relax": [
+   9,
+   9,
+   9
+  ],
+  "k_static": [
+   15,
+   15,
+   15
+  ]
+ },
+ {
+  "tag": "mp-2282_NiS2_Pa-3",
+  "natoms": 12,
+  "arch": "avx2",
+  "formula": "NiS2",
+  "k_relax": [
+   5,
+   5,
+   5
+  ],
+  "k_static": [
+   8,
+   8,
+   8
+  ]
+ },
+ {
+  "tag": "mp-23_Ni_Fm-3m",
+  "natoms": 1,
+  "arch": "avx2",
+  "formula": "Ni",
+  "k_relax": [
+   13,
+   13,
+   13
+  ],
+  "k_static": [
+   21,
+   21,
+   21
+  ]
+ },
+ {
+  "tag": "mp-362_Ni3S2_R32",
+  "natoms": 5,
+  "arch": "avx2",
+  "formula": "Ni3S2",
+  "k_relax": [
+   7,
+   7,
+   7
+  ],
+  "k_static": [
+   11,
+   11,
+   11
+  ]
+ },
+ {
+  "tag": "mp-77_S_Fddd",
+  "natoms": 32,
+  "arch": "avx512",
+  "formula": "S",
+  "k_relax": [
+   4,
+   4,
+   4
+  ],
+  "k_static": [
+   6,
+   6,
+   6
+  ]
+ },
+ {
+  "tag": "mp-976920_Ni9S8_C222",
+  "natoms": 34,
+  "arch": "avx512",
+  "formula": "Ni9S8",
+  "k_relax": [
+   4,
+   4,
+   3
+  ],
+  "k_static": [
+   6,
+   6,
+   5
+  ]
+ }
+]

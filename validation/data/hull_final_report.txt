@@ -1,0 +1,38 @@
+============================================================================================================
+ Ni-S FORMATION ENERGY / CONVEX HULL   (PBE, no U, ENCUT=520, PAW54 Ni_pv/S)
+============================================================================================================
+phase                             x_S |    Ef_raw   Eh_raw |   Ef_MP20  Eh_MP20 |     Ef_MP    Eh_MP
+                                      |     eV/at   meV/at |     eV/at   meV/at |     eV/at   meV/at
+------------------------------------------------------------------------------------------------------------
+mp-23_Ni_Fm-3m                  0.000 |    0.0000      0.0 |    0.0000      0.0*|    0.0000      0.0 
+mp-362_Ni3S2_R32                0.400 |   -0.3672      0.0 |   -0.5684      0.0*|   -0.5715      0.0 
+mp-976920_Ni9S8_C222            0.471 |   -0.3734      0.0 |   -0.6101      0.0*|   -0.6110      0.0 
+mp-1547_NiS_R3m                 0.500 |   -0.3577     15.0 |   -0.6092     15.0 |   -0.6107     14.2 
+local-NiAs_NiS_P6_3mmc          0.500 |   -0.2659    106.8 |   -0.5174    106.8 |         -        - 
+mp-1050_Ni3S4_Fd-3m             0.571 |   -0.3710      0.0 |   -0.6584      0.0*|   -0.6585      0.0 
+mp-1180046_NiS2_P2_1c           0.667 |   -0.2593     29.2 |   -0.5947      0.0*|   -0.5915      0.0 
+mp-2282_NiS2_Pa-3               0.667 |   -0.2437     44.9 |   -0.5790     15.6 |   -0.5764     15.2 
+mp-77_S_Fddd                    1.000 |    0.0000      0.0 |    0.0000      0.0*|    0.0000      0.0 
+------------------------------------------------------------------------------------------------------------
+ Ef_raw/Eh_raw : our plain-PBE hull
+ Ef_MP20/Eh_MP20: same energies + MP2020 sulfide anion correction (-0.503 eV per S atom); * = on the MP2020 hull
+ Ef_MP/Eh_MP   : Materials Project values, for cross-check
+ references: mu_Ni = -5.49183 eV/atom, mu_S = -4.13420 eV/atom (raw)
+
+ Ef_MP20 - Ef_MP  (agreement with Materials Project):
+   mp-1180046_NiS2_P2_1c             -3.1 meV/atom
+   mp-2282_NiS2_Pa-3                 -2.7 meV/atom
+   mp-1050_Ni3S4_Fd-3m               +0.1 meV/atom
+   mp-976920_Ni9S8_C222              +0.9 meV/atom
+   mp-1547_NiS_R3m                   +1.5 meV/atom
+   mp-362_Ni3S2_R32                  +3.1 meV/atom
+   mean |deviation| = 1.9 meV/atom over 6 compounds
+
+ hull figure -> /home/glgkgh7539/NiS_hull/hull_NiS_MP2020.png
+
+== decomposition of metastable phases (MP2020 hull) ==
+  mp-1547_NiS_R3m                   15.0 meV/atom  ->  0.708 Ni9S8 + 0.292 Ni3S4
+  mp-2282_NiS2_Pa-3                 15.6 meV/atom  ->  1.000 NiS2  (same composition: mp-1180046_NiS2_P2_1c)
+  local-NiAs_NiS_P6_3mmc           106.8 meV/atom  ->  0.708 Ni9S8 + 0.292 Ni3S4
+
+ data -> /home/glgkgh7539/NiS_hull/hull_final.json

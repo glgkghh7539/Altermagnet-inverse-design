@@ -1,0 +1,16 @@
+name: altermagnet
+channels: [conda-forge]
+dependencies:
+  - python=3.13
+  - numpy=2.4.6
+  - pandas=3.0.3
+  - scikit-learn=1.9.0
+  - scipy=1.18.0
+  - matplotlib
+  - pip
+  - pip:
+      - xgboost==3.4.1
+      - optuna==4.9.0
+      - shap==0.52.0
+      - pymatgen==2026.8.13
+      - spglib==2.7.0

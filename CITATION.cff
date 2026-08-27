@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite the archived release."
+title: "Altermagnet inverse design - code and data"
+abstract: >-
+  Data, trained XGBoost surrogate, and code behind a quantitative inverse-design
+  study of altermagnetic spin splitting. Introduces the Motif Symmetry-Breaking
+  Index (MSBI), a continuous structure-only scalar for how strongly two
+  antiparallel magnetic motifs break the translation and inversion relations
+  that would otherwise enforce spin degeneracy, and applies interpretable
+  machine learning to 3,845 DFT-labelled binary structures.
+type: software
+license: MIT
+doi: 10.5281/zenodo.19488475
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.19488475
+    description: "Archived release on Zenodo"
+authors:
+  - family-names: Chun
+    given-names: Kichan
+    affiliation: "Department of Physics, Sejong University, Seoul, Republic of Korea"
+  - family-names: Kim
+    given-names: Gunn
+    affiliation: "Department of Physics and Hybrid Materials Research Center, Sejong University, Seoul, Republic of Korea"
+keywords:
+  - altermagnetism
+  - spin splitting
+  - inverse design
+  - machine learning
+  - density functional theory
+  - crystal symmetry

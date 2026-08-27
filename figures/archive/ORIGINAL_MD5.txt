@@ -1,0 +1,36 @@
+# md5 of the notebooks as found, before outputs were stripped for deposit
+90407915fc16011c6ccb8eb66a44d5c7  KPS_DFT_free_BO_SGK_original.ipynb  (6771769 bytes)
+d96800d9ddd8eeeac0bccceb87f1b320  plotband_CuO_original.ipynb  (48043 bytes)
+5ca62413d80671c4bf4c3ed54711d476  plotband_FeSi_original.ipynb  (77335 bytes)
+c380d9c4da3d6c0908b6dde1cdf46044  plotfat_original.ipynb  (3365647 bytes)
+e8ca59e1aef57ce21c16e6fe8ae44316  shap_bar_original.ipynb  (5887 bytes)
+
+# The notebooks in this directory are the originals as found, with their outputs stripped for
+# deposit and nothing else changed. Their code comments are in Korean and are deliberately left
+# as they were: rewriting them would break the provenance this directory exists to record. The
+# maintained, English-commented versions of the same analyses are in ../reference_plots/,
+# ../shap_recompute.py and ../../descriptors/.
+
+# ---------------------------------------------------------------------------------
+# One deliberate change, made after the checksums above were taken.
+#
+# plotfat_original.ipynb set its colorbar labels with rotation=270:
+#
+#     cbar1.set_label('spin-up', fontsize=25, rotation=270, labelpad=22)
+#
+# At 270 the text reads top-to-bottom, so beside the colorbar numbers it comes out
+# upside down and against the direction of the y-axis label opposite it. Every other
+# colorbar in this deposit leaves rotation at matplotlib's default 90. The published
+# Fig. 5 carries the same upside-down labels; this is the one thing about those panels
+# that is corrected here rather than reproduced.
+#
+# 16 set_label calls were changed, rotation 270 -> 90. labelpad moved with them: it is
+# measured to the text anchor and the two rotations anchor opposite ends of the box, so
+# at equal pad the 90 label sits one font size further out. Measured on a test colorbar,
+# (270, pad 22) puts the label 3.4 px inside the tick numbers and (90, pad 0) exactly on
+# them - a shift of one font size in points. Each pad became pad - fontsize + 4, so
+# 22 -> 1 at 25 pt type and 25 -> 9 at 20 pt.
+#
+# Nothing else in the notebook was touched.
+#
+257b44c5cd9752d10f5cacef18384c33  plotfat_original.ipynb  (97848 bytes, after the change above)

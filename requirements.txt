@@ -1,0 +1,15 @@
+# Training and evaluation (model/, optimization/) - reproduction verified with this set
+numpy==2.4.6
+pandas==3.0.3
+scikit-learn==1.9.0
+xgboost==3.4.1
+optuna==4.9.0
+shap==0.52.0
+scipy==1.18.0
+
+# Descriptors and symmetry (descriptors/, symmetry/, analysis/)
+pymatgen==2026.8.13
+spglib==2.7.0
+
+# Figures
+matplotlib>=3.8

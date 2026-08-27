@@ -1,0 +1,82 @@
+[
+ {
+  "U": 0,
+  "variant": "NiAs FM  (all-FM set)",
+  "dE_meV": 106.74455166666607,
+  "vol_per_atom": 13.28,
+  "m_Ni": 0.0,
+  "products": "0.708 Ni9S8 + 0.292 Ni3S4"
+ },
+ {
+  "U": 0,
+  "variant": "NiAs AFM (products FM)",
+  "dE_meV": 106.76264166666627,
+  "vol_per_atom": 13.2825,
+  "m_Ni": 0.074,
+  "products": "0.708 Ni9S8 + 0.292 Ni3S4"
+ },
+ {
+  "U": 2,
+  "variant": "NiAs FM  (all-FM set)",
+  "dE_meV": 92.46431729166638,
+  "vol_per_atom": 13.2275,
+  "m_Ni": 0.0,
+  "products": "0.708 Ni9S8 + 0.292 Ni3S4"
+ },
+ {
+  "U": 2,
+  "variant": "NiAs AFM (products FM)",
+  "dE_meV": -7.009282708333231,
+  "vol_per_atom": 14.03,
+  "m_Ni": 1.122,
+  "products": "0.708 Ni9S8 + 0.292 Ni3S4"
+ },
+ {
+  "U": 4,
+  "variant": "NiAs FM  (all-FM set)",
+  "dE_meV": -80.11313937500032,
+  "vol_per_atom": 15.145,
+  "m_Ni": 1.585,
+  "products": "0.850 Ni9S8 + 0.150 NiS2"
+ },
+ {
+  "U": 4,
+  "variant": "NiAs AFM (products FM)",
+  "dE_meV": -193.7713943750001,
+  "vol_per_atom": 14.5925,
+  "m_Ni": 1.381,
+  "products": "0.850 Ni9S8 + 0.150 NiS2"
+ },
+ {
+  "U": 6,
+  "variant": "NiAs FM  (all-FM set)",
+  "dE_meV": -134.10005224999998,
+  "vol_per_atom": 15.5075,
+  "m_Ni": 1.685,
+  "products": "0.850 Ni9S8 + 0.150 NiS2"
+ },
+ {
+  "U": 6,
+  "variant": "NiAs AFM (products FM)",
+  "dE_meV": -201.37836475000003,
+  "vol_per_atom": 15.0725,
+  "m_Ni": 1.556,
+  "products": "0.850 Ni9S8 + 0.150 NiS2"
+ },
+ {
+  "U": 7,
+  "variant": "NiAs FM  (all-FM set)",
+  "dE_meV": -160.87397187500008,
+  "vol_per_atom": 15.605,
+  "m_Ni": 1.728,
+  "products": "0.850 Ni9S8 + 0.150 NiS2"
+ },
+ {
+  "U": 7,
+  "variant": "NiAs AFM (products FM)",
+  "dE_meV": -211.7783018749999,
+  "vol_per_atom": 15.2625,
+  "m_Ni": 1.625,
+  "products": "0.850 Ni9S8 + 0.150 NiS2"
+ }
+]
