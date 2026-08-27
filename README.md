@@ -131,6 +131,38 @@ column takes four values: `ALTERMAGNET` (2,841 rows), `conventional_AFM_inversio
 conventional-AFM classes are the symmetry-preserving controls retained in the training cohort;
 they are not claimed to be altermagnets.
 
+### The magnetic classification of the 322 parents, in one table
+
+**`data/derived/altermagnet_classification_parents.csv`** (322 rows) and
+**`data/derived/altermagnet_classification.csv`** (3,845 rows) join the magnetic symmetry,
+the moments and the labels that are otherwise spread over five files. Built by
+`python data/derived/make_classification_tables.py`; nothing in them is recomputed.
+
+Per parent: `verdict`, `ops` (the operation relating the two spin sublattices), `n_ops`,
+`nsym`, `spacegroup`, `msg_type`, `bns`, `uni`, and, aggregated over its strained children,
+the SSE range, the Γ-point average, the moment range and the moment asymmetry. Per
+structure the same, plus the signed `m1_muB` / `m2_muB` and the `antiparallel` flag.
+
+What the tables say:
+
+| | |
+|---|---|
+| parent verdicts | `ALTERMAGNET` 243, `conventional_AFM_inversion` 57, `compensated_FiM_candidate` 12, `conventional_AFM_translation` 10 |
+| MSG type | type III 300, type I 12, type IV 9, unresolved 1 |
+| sublattice operation | `mirror/rotoinv\|rotation` 211, `inversion\|mirror/rotoinv\|rotation` 22, `rotation` 19, none found 12 |
+| **strain changes the verdict** | **87 of 3,524 strained children (2.5 %)**; 78 of them are parents classified `ALTERMAGNET` whose strained child falls back to `compensated_FiM_candidate` |
+| **the two local moments** | antiparallel in **2,562 of the 2,565** structures where both are known, and \|\|m₁\|−\|m₂\|\| never exceeds **0.006 μB** |
+| Γ-point average | of **absolute** differences; median 0.89 meV, 90th percentile 3.68, max 9.96 |
+
+**Signs.** `fin_data.csv` carries magnitudes - its `ion1 tot` is \|m₁\| and its `tot_mag` is
+\|m_total\|. The signed moments are in **`data/raw/spin_splitting_summary.csv`**, the direct
+output of `screening/SSE_ax.py`, which reads them out of the last `magnetization (x)` block
+of each OUTCAR through `check_magnetization()` in `screening/parse_eigenval.py`. Over the
+2,565 structures the two files share they agree exactly once the sign is removed. That
+signed run is the smaller one, so `m2_muB` is blank for the other 1,280 structures.
+**`data/raw/magnetization.csv`** is the \|m₁\| column for all 4,491 structures that were
+parsed, of which 3,845 survived screening.
+
 **`structures/POSCARS.zip`** holds 5,945 structures = 1,010 unstrained + 4,935 strained
 variants of those 1,010 parents. The 322 parents and 3,845 structures that passed screening are
 the ones listed in `fin_data.csv`. Strain suffixes take the 17 forms
