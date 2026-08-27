@@ -1,7 +1,7 @@
 c28fa6059f1cca7d349e2ccf00ed9c24  .gitignore
 ef168a97753ca558e4d31e5765cf5753  CITATION.cff
 f532c2cf38e95c0b7b57af7c2e5f1bf2  LICENSE
-87d834e3fcdc4fe8005d859a6f2ac77b  README.md
+01f8429edd611afb80f48002ffe6f146  README.md
 260797716269a66882b06ac67c4df3ba  analysis/cohort/am_only.log
 fb2a0d8c473c2e249a466e04d0673b4f  analysis/cohort/am_only.py
 280f514fe505efbf9bfee775b4b4f37e  analysis/cohort/cohort_baseline_seeds.csv
@@ -17,6 +17,7 @@ c18bc32634c1e6468032fa033bf3add8  analysis/cohort/size_control_seeds.csv
 fdf75f972ecb53c214f3b42090d2c0c4  analysis/prototype_match.py
 abd9baacbd66fec11f3058739a366800  analysis/structure_check.py
 09ca7e83efe8368e02dc79bdb9632248  data/Altermagnetism_full_data.csv
+a15587e3e7e5a52c465784cd09fe0a7d  data/README.md
 1228256ee70c570b2092f32af4f6f42e  data/candidate_master.csv
 3f9fea07dd919a6b30931eba022affde  data/derived/altermagnet_classification.csv
 7946e3a6b375f96e3a436ee4e7a9a53b  data/derived/altermagnet_classification_parents.csv

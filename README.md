@@ -134,6 +134,10 @@ column takes four values: `ALTERMAGNET` (2,841 rows), `conventional_AFM_inversio
 conventional-AFM classes are the symmetry-preserving controls retained in the training cohort;
 they are not claimed to be altermagnets.
 
+`data/README.md` is the file-by-file inventory of that directory — which of the three tiers
+each table belongs to, how many rows it has, which script writes it, and which column carries
+the published quantity. Read it before joining anything.
+
 ### The magnetic classification of the 322 parents, in one table
 
 **`data/derived/altermagnet_classification_parents.csv`** (322 rows) and
