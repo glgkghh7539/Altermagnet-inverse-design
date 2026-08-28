@@ -64,7 +64,7 @@ cecc1ee1f36357b917cf6fedb732c9b1  figures/archive/ORIGINAL_MD5.txt
 90ee43161425c1a37835db203e548672  figures/archive/plotband_FeSi_original.ipynb
 257b44c5cd9752d10f5cacef18384c33  figures/archive/plotfat_original.ipynb
 635bb63f716c97afbf78e285d52cd008  figures/archive/shap_bar_original.ipynb
-35bbd7be352275172130582ae9a16247  figures/compose_figures.py
+111c00062b4d6a45f967607b723ace41  figures/compose_figures.py
 945d2027429282d282dc4b6ee54113b7  figures/crop_structures.py
 f85d4c3dcae42edbc67471cc5128c44c  figures/data/CuO/BAND.dat
 d95857d833829887deb5e1be3cade277  figures/data/CuO/BAND_full.dat
