@@ -496,7 +496,7 @@ PAIRS = {
         cols=(dict(name='CoO', ink=(55.44, 150.46, 252.96, 438.46), ratio='0.500',
                    values=('CoO', 'SSE: 0.972 eV', 'MSBI: 0.812', 'MPF: 0.521')),
               dict(name='CrS', ink=(310.08, 152.62, 516.24, 445.42), ratio='0.800',
-                   values=('CrS', 'SSE: 0.552 eV', 'MSBI: 0.694', 'MPF: 0.517')))),
+                   values=('CrS', 'SSE: 0.314 eV', 'MSBI: 0.694', 'MPF: 0.517')))),
     'SI_6': dict(
         page=(616.0, 798.0),
         band=('SI6(a-b).png', (1.8, 464.2, 615.9, 798.0)),

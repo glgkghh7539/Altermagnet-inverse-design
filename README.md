@@ -53,7 +53,7 @@ screening and ranking tool, not a substitute for a DFT calculation.
 | 1. SSE extraction and screening | `screening/` | VASP `EIGENVAL` → SSE, Γ-point average splitting |
 | 2. Descriptor computation | `descriptors/` | structure → 52 descriptors, MSBI included |
 | 3. Model training and evaluation | `model/` | XGBoost, GroupKFold, ablation, nested CV, SHAP |
-| 4. Inverse design | `optimization/` | Optuna BO + coordination-matched prototype matching |
+| 4. Inverse design | `optimization/` | Optuna BO + coordination-matched prototype matching (`python optimization/reproduce_similarity.py` reproduces the cosine similarity *c* and distance *d* of Table 2) |
 | 5. DFT assessment | `vasp/`, `validation/` | input generation, convex hull, U scan, structure checks |
 | 6. Symmetry classification | `symmetry/` | sublattice-connecting operation, magnetic space group |
 | 7. Cohort-composition tests | `analysis/cohort/` | altermagnet-only and size-matched training cohorts |
@@ -83,6 +83,8 @@ screening/     parse_eigenval.py              EIGENVAL → SSE (canonical extrac
 optimization/  BO.py                          Optuna BO (defines FEATURE_ORDER)
                optimization_results_resumable.json   100,000 trials; all 52 descriptors for the top 5
                similarity_analysis_final_results_top50.csv  nearest 50 prototypes per trial
+               fin_data_bo.csv                the 3,851-row table the BO and the matching ran on
+               reproduce_similarity.py        reproduces the c and d of Table 2 of the manuscript
 model/         final_model_all_named.json     trained XGBoost (feature_names embedded)
                ablation_grouped.py            ablation + drop-column + grouped permutation
                stability_selection_100_parallel.py   20 seeds x 5 folds stability selection
