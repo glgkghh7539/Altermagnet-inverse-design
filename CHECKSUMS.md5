@@ -234,6 +234,7 @@ d30418748ef0fa412e33b6f89cdf807c  figures/structures/README.md
 c28fa6059f1cca7d349e2ccf00ed9c24  .gitignore
 f532c2cf38e95c0b7b57af7c2e5f1bf2  LICENSE
 458b65330f7bc21eb9fa59d18c5b8c4d  model/ablation_grouped.py
+634664fa20c620019143369766481097  model/candidate_stage_features.csv
 fcdf3c74c5ef86833a7dc9fdce4333ea  model/final_model_all_named.json
 5e69052b058fdd2857d6bb58beb4b256  model/fix_model.py
 a8eabab30300dd84e401fdbcd3ff167a  model/model_check.py
@@ -251,12 +252,13 @@ f13daa03d0653acad092a219d92bf638  model/table2.py
 6fff17a3eb171e076d453b27f3f1aff8  optimization/optimization_results_resumable.json
 d9a2b050837197a758404a484ed7cb19  optimization/reproduce_similarity.py
 3d49e28ea69f37f7eee352110f841f9d  optimization/similarity_analysis_final_results_top50.csv
-f5cf743dec20f02eb2954abb51118096  README.md
+27aaf7d072391edbcb7da1185334d87a  README.md
 25b08b51f17da12f74b7a1de13c823a2  requirements.txt
 452b04643541cae7b4cc39f668b60e0d  screening/extract_moments.py
 d84bdd3f5d083112a2d08d6d3bdbd33e  screening/parse_eigenval.py
 cf252abf59eb2ef676b6a23c382c808b  screening/SSE_ax.py
 1216ffe772def9c04ca5d9cf96580504  screening/SSE_calc.sh
+3df9292857dda7cdc67eaec86c323ac4  structures/candidate_stages.zip
 b11a3edab4f954fad387cd2175bd6be6  structures/CoO_sp_relaxed.vasp
 41022752545ec2346fb476ad0b5082f4  structures/CoS_relaxed.vasp
 5457e871ba34b5b49d4430e499a624cf  structures/CrS_relaxed.vasp

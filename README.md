@@ -85,12 +85,19 @@ optimization/  BO.py                          Optuna BO (defines FEATURE_ORDER)
                similarity_analysis_final_results_top50.csv  nearest 50 prototypes per trial
                fin_data_bo.csv                the 3,851-row table the BO and the matching ran on
                reproduce_similarity.py        reproduces the c and d of Table 2 of the manuscript
+               (structures/candidate_stages.zip carries the 24 stage POSCARs behind
+               candidate_stage_features.csv)
 model/         final_model_all_named.json     trained XGBoost (feature_names embedded)
                ablation_grouped.py            ablation + drop-column + grouped permutation
                stability_selection_100_parallel.py   20 seeds x 5 folds stability selection
                nested_hp_validation.py        nested hyperparameter validation
                retrain_targets.py             alternative-target retraining + SHAP
                table2.py, mpf_impact.py       prediction re-evaluation, Williams leverage
+               candidate_stage_features.csv   52 descriptors of each candidate at the matched/
+                                              generated/relaxed/released stages; input of table2.py:
+                                              python model/table2.py model/candidate_stage_features.csv \
+                                                data/fin_data.csv model/final_model_all_named.json \
+                                                optimization/optimization_results_resumable.json
                model_check.py, fix_model.py   model verification, feature_names assignment
                verify_model.py                loads the artifact and reports what it reproduces
                slurm/                         submission scripts
