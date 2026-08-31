@@ -191,8 +191,8 @@ script prints. Together the three files give both moments for all 3,845 structur
 The OUTCARs themselves are about 78 GB and are not deposited; `screening/extract_moments.py`
 is, and takes `--root` or `$OUTCAR_ROOT`.
 
-**`structures/POSCARS.zip`** holds 5,945 structures = 1,010 unstrained + 4,935 strained
-variants of those 1,010 parents. The 322 parents and 3,845 structures that passed screening are
+**`structures/POSCARS.zip`** holds 5,945 structures = 1,011 unstrained + 4,934 strained
+variants of those 1,011 parents. The 322 parents and 3,845 structures that passed screening are
 the ones listed in `fin_data.csv`. Strain suffixes take the 17 forms
 `_(st|x|y|z)(025|050|950|975)`; **only `POSCAR_Cu2O2_1_st05` uses a two-digit suffix**, and that
 file duplicates `_st050` and was excluded from the dataset (see below).
